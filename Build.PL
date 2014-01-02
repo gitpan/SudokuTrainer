@@ -1,17 +1,19 @@
 use 5.006;
 use strict;
 use warnings;
-use feature 'say';
+#use feature 'say';
 use Module::Build;
 
 my $distro = 'SudokuTrainer';   # Name of the Distribution (without version suffix)
-#!!my $distro = 'GamesSudokuTrainer';   # Name of the Distribution (without version suffix)
 my $distrib = 'Games::Sudoku::Trainer';   # Position of the Distribution
 (my $distdir = $distrib) =~ s#::#/#g;   # Dir. of the Distribution
 
+=for no_cwd
 use Cwd;
 say "cwd: ", getcwd();
 say "distrib $distrib   distdir $distdir";
+
+=cut
 
 my %args = (
     dist_name           => "$distro",

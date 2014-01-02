@@ -1,7 +1,7 @@
 Build.PL
 lib/Games/Sudoku/Trainer/Cell.pm
 lib/Games/Sudoku/Trainer/Check_pause.pm
-lib/Games/Sudoku/Trainer/Constant_structures.pm
+lib/Games/Sudoku/Trainer/Const_structs.pm
 lib/Games/Sudoku/Trainer/examples/bivalue_universal_grave.sudo
 lib/Games/Sudoku/Trainer/examples/BLI_and_LBI.sudo
 lib/Games/Sudoku/Trainer/examples/block-line_interaction.sudo
@@ -37,6 +37,7 @@ script/enter_presets.pl
 script/sudokutrainer.pl
 t/02_examples.t
 t/all_strats_code.t
+t/cwd.t
 t/examples.t
 Makefile.PL
 META.yml

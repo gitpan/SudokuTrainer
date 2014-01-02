@@ -12,7 +12,7 @@ our @blocks;    # block objects		(1 .. 9)
 
 package Games::Sudoku::Trainer::Unit;
 
-use version; our $VERSION = qv('0.0.1');    # PBP
+use version; our $VERSION = qv('0.0.2');    # PBP
 
 sub new {                                   # constructor for unit objects
     my $class = shift;
@@ -108,108 +108,101 @@ sub crossline {
       : $rows[ $cell->Row_num ];
 }
 
-{
+#====================================================================
+package Row;
 
-    package Row;
+use base qw/Games::Sudoku::Trainer::Unit/;
 
-    use base qw/Games::Sudoku::Trainer::Unit/;
-
-    sub new {    # constructor for row objects
-        my $class = shift;
-        my $idx   = shift;          # row index (1 .. 9)
-        my $cell1 = 9 * $idx - 8;
-        my @args  = (
-            'Index', $idx,
-            'Name',  "r$idx",
-            'Members',
-            [ @cells[ $cell1 .. $cell1 + 8 ] ],    # members are cell objects
-        );
-        my $self = $class->SUPER::new(@args);
-        return $self;                              # blessed in SUPER::new
-    }
-
-    # Return the cell objects that lie in the cross section of 2 units
-    #		@cross_cells = $unit1->crosssection($unit2);
-    #
-    sub crosssection {
-        my ( $self, $unit2 ) = @_;
-
-        return
-            ref $unit2 eq 'Row' ? ()
-          : ref $unit2 eq 'Col'
-          ? ( Constant_structures::crossRowCol( $self, $unit2 ) )
-          : @{ Constant_structures::crossRowBlock( $self, $unit2 ) };
-    }
+sub new {    # constructor for row objects
+	my $class = shift;
+	my $idx   = shift;          # row index (1 .. 9)
+	my $cell1 = 9 * $idx - 8;
+	my @args  = (
+		'Index', $idx,
+		'Name',  "r$idx",
+		'Members',
+		[ @cells[ $cell1 .. $cell1 + 8 ] ],    # members are cell objects
+	);
+	my $self = $class->SUPER::new(@args);
+	return $self;                              # blessed in SUPER::new
 }
 
-{
+# Return the cell objects that lie in the cross section of 2 units
+#		@cross_cells = $unit1->crosssection($unit2);
+#
+sub crosssection {
+	my ( $self, $unit2 ) = @_;
 
-    package Col;
-
-    use base qw/Games::Sudoku::Trainer::Unit/;
-
-    sub new {    # constructor for col objects
-        my $class = shift;
-        my $idx   = shift;    # col index (1 .. 9)
-
-        my $cell1   = $idx;
-        my $members = [];
-        foreach my $i ( 0 .. 8 ) {
-            push @$members,
-              $cells[ $cell1 + $i * 9 ];    # members are cell objects
-        }
-        my @args = ( 'Index', $idx, 'Name', "c$idx", 'Members', $members, );
-        my $self = $class->SUPER::new(@args);
-        return $self;                       # blessed in SUPER::new
-    }
-
-    # Return the cell objects that lie in the cross section of 2 units
-    #		@cross_cells = $unit1->crosssection($unit2);
-    #
-    sub crosssection {
-        my ( $self, $unit2 ) = @_;
-
-        return
-          ref $unit2 eq 'Row'
-          ? ( Constant_structures::crossRowCol( $unit2, $self ) )
-          : ref $unit2 eq 'Col' ? ()
-          :   @{ Constant_structures::crossColBlock( $self, $unit2 ) };
-    }
+	return
+		ref $unit2 eq 'Row' ? ()
+	  : ref $unit2 eq 'Col'
+	  ? ( Games::Sudoku::Trainer::Const_structs::crossRowCol( $self, $unit2 ) )
+	  : @{ Games::Sudoku::Trainer::Const_structs::crossRowBlock( $self, $unit2 ) };
 }
 
-{
+#====================================================================
+package Col;
 
-    package Block;
+use base qw/Games::Sudoku::Trainer::Unit/;
 
-    use base qw/Games::Sudoku::Trainer::Unit/;
+sub new {    # constructor for col objects
+	my $class = shift;
+	my $idx   = shift;    # col index (1 .. 9)
 
-    sub new {    # constructor for block objects
-        my $class = shift;
-        my $idx   = shift;    # block index (1 .. 9)
+	my $cell1   = $idx;
+	my $members = [];
+	foreach my $i ( 0 .. 8 ) {
+		push @$members,
+		  $cells[ $cell1 + $i * 9 ];    # members are cell objects
+	}
+	my @args = ( 'Index', $idx, 'Name', "c$idx", 'Members', $members, );
+	my $self = $class->SUPER::new(@args);
+	return $self;                       # blessed in SUPER::new
+}
 
-        my @indx = ( 1 .. 3, 10 .. 12, 19 .. 21 );
-        my $offset;
-        $offset = 3 * ( ( $idx - 1 ) % 3 ) + 27 * int( ( $idx - 1 ) / 3 );
-        $_ += $offset foreach @indx;
-        my @args =
-          ( 'Index', $idx, 'Name', "b$idx", 'Members', [ @cells[@indx] ], );
-        my $self = $class->SUPER::new(@args);
-        return $self;         # blessed in SUPER::new
-    }
+# Return the cell objects that lie in the cross section of 2 units
+#		@cross_cells = $unit1->crosssection($unit2);
+#
+sub crosssection {
+	my ( $self, $unit2 ) = @_;
 
-    # Return the cell objects that lie in the cross section of 2 units
-    #		@cross_cells = $unit1->crosssection($unit2);
-    #
-    sub crosssection {
-        my ( $self, $unit2 ) = @_;
+	return
+	  ref $unit2 eq 'Row'
+	  ? ( Games::Sudoku::Trainer::Const_structs::crossRowCol( $unit2, $self ) )
+	  : ref $unit2 eq 'Col' ? ()
+	  :   @{ Games::Sudoku::Trainer::Const_structs::crossColBlock( $self, $unit2 ) };
+}
 
-        return
-          ref $unit2 eq 'Row'
-          ? @{ Constant_structures::crossRowBlock( $unit2, $self ) }
-          : ref $unit2 eq 'Col'
-          ? @{ Constant_structures::crossColBlock( $unit2, $self ) }
-          : ();
-    }
+#====================================================================
+package Block;
+
+use base qw/Games::Sudoku::Trainer::Unit/;
+
+sub new {    # constructor for block objects
+	my $class = shift;
+	my $idx   = shift;    # block index (1 .. 9)
+
+	my @indx = ( 1 .. 3, 10 .. 12, 19 .. 21 );
+	my $offset;
+	$offset = 3 * ( ( $idx - 1 ) % 3 ) + 27 * int( ( $idx - 1 ) / 3 );
+	$_ += $offset foreach @indx;
+	my @args =
+	  ( 'Index', $idx, 'Name', "b$idx", 'Members', [ @cells[@indx] ], );
+	my $self = $class->SUPER::new(@args);
+	return $self;         # blessed in SUPER::new
+}
+
+# Return the cell objects that lie in the cross section of 2 units
+#		@cross_cells = $unit1->crosssection($unit2);
+#
+sub crosssection {
+	my ( $self, $unit2 ) = @_;
+	return
+	  ref $unit2 eq 'Row'
+	  ? @{ Games::Sudoku::Trainer::Const_structs::crossRowBlock( $unit2, $self ) }
+	  : ref $unit2 eq 'Col'
+	  ? @{ Games::Sudoku::Trainer::Const_structs::crossColBlock( $unit2, $self ) }
+	  : ();
 }
 
 1;

@@ -10,7 +10,7 @@ our @rows;     # row objects		(1 .. 9)
 
 package Games::Sudoku::Trainer::GUIpause_restrict;
 
-use version; our $VERSION = qv('0.0.1');    # PBP
+use version; our $VERSION = qv('0.0.2');    # PBP
 
 use Tk;
 
@@ -62,14 +62,15 @@ sub _config_disp_mode_restrict {
         my $answer = $db->Show();
 
         if ( $answer eq 'Cancel' or $pause_restrict !~ /^(r|c|b)[1-9]$/ ) {
-            GUI::set_pause_mode('default');
+            Games::Sudoku::Trainer::GUI::set_pause_mode('default');
             return;
         }
         my $unit  = Games::Sudoku::Trainer::Unit->by_name($pause_restrict);
         my $count = $unit->active_Members;
         if ( $unit->active_Members <= 1 ) {
-            Run::user_err("All values of $pause_restrict already found");
-            GUI::set_pause_mode('default');
+            Games::Sudoku::Trainer::Run::user_err(
+			  "All values of $pause_restrict already found");
+            Games::Sudoku::Trainer::GUI::set_pause_mode('default');
         }
         $display_mode_restrict = $pause_restrict;
         Games::Sudoku::Trainer::Pause->setMode_restriction($pause_restrict);
@@ -88,7 +89,7 @@ sub _config_disp_mode_restrict {
             return 1;    # wait for 2nd char
         }
         if ( $unit_name !~ /^(r|c|b)[1-9]$/ ) {
-            Run::user_err(
+            Games::Sudoku::Trainer::Run::user_err(
                 "Invalid unit name $unit_name,"
                   . " format is 'unit type - unit number'",
                 "\n(unit type: 'r' for row, 'c' for column, 'b' for block)"
@@ -134,7 +135,7 @@ sub _config_disp_mode_restrict {
 
         $pause_restrict = lc($pause_restrict);
         if ( $answer eq 'Cancel' or $pause_restrict !~ /^r[1-9]c[1-9]$/ ) {
-            GUI::set_pause_mode('default');
+            Games::Sudoku::Trainer::GUI::set_pause_mode('default');
             return;
         }
         my $cell      = Games::Sudoku::Trainer::Cell->by_name($pause_restrict);
@@ -150,8 +151,9 @@ sub _config_disp_mode_restrict {
             $candcount = 0;
         }
         if ( $candcount == 0 ) {
-            Run::user_err("Value of $pause_restrict already found");
-            GUI::set_pause_mode('default');
+            Games::Sudoku::Trainer::Run::user_err(
+			  "Value of $pause_restrict already found");
+            Games::Sudoku::Trainer::GUI::set_pause_mode('default');
             return;
         }
         $display_mode_restrict = $pause_restrict;
@@ -170,7 +172,7 @@ sub _config_disp_mode_restrict {
         if ( $cell_name =~ /^r[1-9]?c?[1-9]?$/i ) {
             return 1;    # (still) ok
         } else {
-            Run::user_err(
+            Games::Sudoku::Trainer::Run::user_err(
                 "Invalid cell name $cell_name, format is\n",
                 '"r" - row number - "c" - column number'
             );
@@ -238,7 +240,7 @@ sub norestrict_pause {
           $tracewindow->Canvas( -borderwidth => 2, -relief => 'groove' )
           ->pack( -anchor => 'w' );
         $tracewindow->Label( -textvariable => \$tracestatus )->pack();
-        GUI::build_candsquares( $canv,
+        Games::Sudoku::Trainer::GUI::build_candsquares( $canv,
             Games::Sudoku::Trainer::Cell->by_name($pause_restriction) );
         $canv->move( 'new', 2, 2 );
         $canv->itemconfigure(
@@ -338,7 +340,7 @@ sub norestrict_pause {
                     "Value found for the trace cell\nby strategy "
                   . Games::Sudoku::Trainer::Pause->Strat
                   . ".\nEnd of trace mode";
-                GUI::set_pause_mode('default');
+                Games::Sudoku::Trainer::GUI::set_pause_mode('default');
                 Games::Sudoku::Trainer::Check_pause::pause();
 
                 # don't kill the tracewindow if the user created a new one

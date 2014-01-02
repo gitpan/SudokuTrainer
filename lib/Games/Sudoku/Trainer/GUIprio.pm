@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use version; our $VERSION = qv('0.0.1');    # PBP
+use version; our $VERSION = qv('0.0.2');    # PBP
 
 #-----------------------------------------------------------------------
 # change priorities dialog
@@ -9,7 +9,7 @@ use version; our $VERSION = qv('0.0.1');    # PBP
 
 my $mw;    # main window
 
-package GUIprio;
+package Games::Sudoku::Trainer::GUIprio;
 
 # Show and process the priorities list
 # When done, recreate the priorities list
@@ -66,11 +66,13 @@ sub _move_sel {
     my @selidxs = $lb->curselection();
 
     @selidxs or do {
-        Run::user_err("Please select the strategies to be moved");
+        Games::Sudoku::Trainer::Run::user_err(
+		  "Please select the strategies to be moved");
         return;
     };
     $selidxs[-1] - $selidxs[0] == $#selidxs or do {
-        Run::user_err("The selection must be contiguous");
+        Games::Sudoku::Trainer::Run::user_err(
+		  "The selection must be contiguous");
         return;
     };
     my @movethem = $lb->get( $selidxs[0], $selidxs[-1] );

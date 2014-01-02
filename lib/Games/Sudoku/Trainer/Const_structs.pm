@@ -5,16 +5,16 @@ use warnings;
 # basic Sudoku structures
 # don't panic - all basic Sudoku structures are constant
 package main;
-our @cells;     # cell objects		(1 .. 81)
-our @rows;      # row objects		(1 .. 9)
-our @cols;      # col objects		(1 .. 9)
-our @blocks;    # block objects		(1 .. 9)
+our @cells;     # cell objects      (1 .. 81)
+our @rows;      # row objects       (1 .. 9)
+our @cols;      # col objects       (1 .. 9)
+our @blocks;    # block objects     (1 .. 9)
 
-package Constant_structures;
+package Games::Sudoku::Trainer::Const_structs;
 
-use version; our $VERSION = qv('0.0.1');    # PBP
+use version; our $VERSION = qv('0.0.2');    # PBP
 
-# globals of package Constant_structures
+# globals of package Const_structs
 # intersection of units
 my ( $crossRowCol_ref, $crossRowBlock_ref, $crossColBlock_ref );
 

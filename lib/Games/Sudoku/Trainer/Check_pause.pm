@@ -29,12 +29,13 @@ sub check_pause {
         Games::Sudoku::Trainer::Pause->setStrat($strategy);
         require Games::Sudoku::Trainer::GUIdetails;
         Games::Sudoku::Trainer::GUIdetails::build_strat_details();
-        GUI::button_state( 'Details', 'enable' );    # enable the Details button
+		# enable the Details button		
+        Games::Sudoku::Trainer::GUI::button_state( 'Details', 'enable' );
         if ( $found_info_ref->[1] eq 'insert' ) {
-            GUI::set_status('Found a further value');
+            Games::Sudoku::Trainer::GUI::set_status('Found a further value');
         }
         else {
-            GUI::set_status('Excluded further candidates');
+            Games::Sudoku::Trainer::GUI::set_status('Excluded further candidates');
         }
         if ( Games::Sudoku::Trainer::Pause->Mode eq 'Trace a cell' ) {
             Games::Sudoku::Trainer::GUIpause_restrict::update_tracewindow(
@@ -43,9 +44,10 @@ sub check_pause {
         else {
             pause();
         }
-        GUI::set_status('');
+        Games::Sudoku::Trainer::GUI::set_status('');
         Games::Sudoku::Trainer::Pause->setStrat('');
-        GUI::button_state( 'Details', 'disable' );  # disable the Details button
+        # disable the Details button
+        Games::Sudoku::Trainer::GUI::button_state( 'Details', 'disable' );
     }
     return;
 }
@@ -92,11 +94,12 @@ sub _pause_value_found {
     $pause_restrict or return 1;    # anywhere
     my $cell = $found_info_ref->[3]->[1];
     if ( $pause_restrict eq $cell->Name() ) {    # at requested cell
-        GUI::showmessage(
+        Games::Sudoku::Trainer::GUI::showmessage(
             -title   => 'Information',
             -message => 'Value found at cell ' . $pause_restrict
         );
-        GUI::set_pause_mode('default');          # revert to default pause mode
+        # revert to default pause mode
+        Games::Sudoku::Trainer::GUI::set_pause_mode('default');
         return 1;
     }
     else {                                       # in requested unit
@@ -107,13 +110,14 @@ sub _pause_value_found {
         }
         return 0 if $unit->Name ne $pause_restrict;
         if ( $unit->active_Members == 1 ) {
-            GUI::showmessage(
+            Games::Sudoku::Trainer::GUI::showmessage(
                 -title   => 'Information',
                 -message => 'All values found in unit '
                   . $unit->Name
                   . ".\nEnd of 'value found' mode"
             );
-            GUI::set_pause_mode('default');    # revert to default pause mode
+            # revert to default pause mode
+            Games::Sudoku::Trainer::GUI::set_pause_mode('default');
         }
         return 1;
     }
@@ -160,7 +164,7 @@ sub _pause_trace_cell {
 
     sub pause {
         $inpause = 1;
-        GUI::wait( \$inpause );
+        Games::Sudoku::Trainer::GUI::wait( \$inpause );
         return;
     }
 

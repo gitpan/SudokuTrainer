@@ -8,13 +8,13 @@ package main;
 our @cells;    # cell objects		(1 .. 81)
 our @rows;     # row objects		(1 .. 9)
 
-use version; our $VERSION = qv('0.0.1');    # PBP
+use version; our $VERSION = qv('0.0.2');    # PBP
 
 # To reduce the size of this file, the code of some dialogs has been moved
 # to subordinate modules. These are loaded at their first usage, so this
 # will hopefully speed up a bit the startup time of the application.
 
-package GUI;
+package Games::Sudoku::Trainer::GUI;
 
 use Tk;
 use Tk::ErrorDialog;
@@ -41,14 +41,15 @@ my $preset_count;        # preset counter
 my $noop_sub = sub { };
 
 # global constants
-my $candsize  = 7;                         # size of a candidate square (pixels)
+my $candsize  = 7;                         # size of a cand. square (pixels)
 my $cellsize  = 3 * ( $candsize + 3 ) - 1; # size of a sudoku cell
 my @all_types = qw/units cands cells/;     # all clue type names
 
 $mw = MainWindow->new();
 $mw->withdraw;
 _build_GUI();
-$details_bt->bind( '<Visibility>' => sub { Run::initialize_and_start() } );
+$details_bt->bind( '<Visibility>' 
+    => sub { Games::Sudoku::Trainer::Run::initialize_and_start() } );
 $mw->deiconify;
 
 set_pause_mode('default');
@@ -140,7 +141,7 @@ sub _build_menubar {
             [
                 qw/command ~Change -command/ => sub {
                     require Games::Sudoku::Trainer::GUIprio;
-                    GUIprio::change_prios($mw);
+                    Games::Sudoku::Trainer::GUIprio::change_prios($mw);
                   }
             ]
         ],
@@ -404,14 +405,24 @@ sub get_initialpuzzle {
     my ($sel_idx) = $lb->curselection;
 
     if ( !$sel_idx ) {
-        my $initfile = $mw->getOpenFile;
+#        my $initfile = $mw->getOpenFile;
+        my $initfile = $mw->getOpenFile(
+#            -filetypes =>
+#              [ [ 'Sudoku examples', '.sudo' ], [ 'All Files', ['*'] ], ],
+            -filetypes => [
+				[ 'Sudoku Files', '.sudo' ],
+				[ 'Text Files', [ '.txt', '.text' ] ],
+				[ 'All Files', ['*'] ],
+			],
+            -defaultextension => '.sudo',
+       );
         return unless $initfile;
         use Encode;
         $initfile = encode( 'iso-8859-1', $initfile );
         open( my $SUDO, '<', $initfile ) or die("can't open $initfile: $!");
         @game = <$SUDO>;
         close($SUDO);
-        GUI::show_filename($initfile);
+        show_filename($initfile);
     }
     elsif ( $sel_idx == 1 ) {
         @game = do { require FindBin; qx"perl $FindBin::Bin/enter_presets.pl" };
@@ -424,6 +435,7 @@ sub get_initialpuzzle {
             -initialdir => $sampledir,
             -filetypes =>
               [ [ 'Sudoku examples', '.sudo' ], [ 'All Files', ['*'] ], ],
+            -defaultextension => '.sudo',
         );
         return unless $initfile;
         use Encode;
@@ -432,7 +444,7 @@ sub get_initialpuzzle {
           or do { Run::user_err("can't open $initfile:\n$!"); return };
         @game = <$SUDO>;
         close($SUDO);
-        GUI::show_filename($initfile);
+        show_filename($initfile);
     }
     return @game;
 } ## end sub get_initialpuzzle
@@ -599,7 +611,13 @@ sub show_filename {
         $file = $mw->getSaveFile(
             -title       => 'Sudoku output file',
             -initialdir  => $pathname,
-            -initialfile => $basename
+            -initialfile => $basename,
+            -filetypes => [
+				[ 'Sudoku Files', '.sudo' ],
+				[ 'Text Files', [ '.txt', '.text' ] ],
+				[ 'All Files', ['*'] ],
+			],
+            -defaultextension => '.sudo',
         );
         return unless defined $file;
         use Encode;
@@ -607,12 +625,12 @@ sub show_filename {
 
         if ( $puzzle_state eq 'current' ) {
             $lastfile = $file;
-            Write_puzzle::write_result($file);
-            $initfile or GUI::show_filename($file);
+            Games::Sudoku::Trainer::Write_puzzle::write_result($file);
+            $initfile or show_filename($file);
         }
         else {
-            Write_puzzle::write_initial($file);
-            GUI::show_filename($file);
+            Games::Sudoku::Trainer::Write_puzzle::write_initial($file);
+            show_filename($file);
         }
         return;
     }
@@ -623,7 +641,7 @@ sub show_filename {
     #
     sub _result_save {
         if ( defined $lastfile ) {
-            Write_puzzle::write_result($lastfile);
+            Games::Sudoku::Trainer::Write_puzzle::write_result($lastfile);
         }
         else {
             _sudoku_save_as('current');
@@ -684,7 +702,7 @@ sub _prio_load {
 
     my $infile = $mw->getOpenFile(
         -filetypes        => $types,
-        -defaultextension => '.prio'
+        -defaultextension => '.prio',
     );
     return unless $infile;
     use Encode;
@@ -759,11 +777,11 @@ sub wait {
     return;
 }
 
-# no longer call Check_pause::endpause on a click of the kill button
+# call Check_pause::endpause no longer on a click of the kill button
 #   reason: the game is over, we aren't in a pause
 #
 sub set_exit_on_delete {
-    $mw->protocol( 'WM_DELETE_WINDOW', \&GUI::quit );
+    $mw->protocol( 'WM_DELETE_WINDOW', \&quit );
     return;
 }
 
@@ -792,8 +810,8 @@ sub recode_clues {
                 $mw->messageBox(
                     -title => 'Code error',
                     -icon  => 'info',
-                    -message =>
-"Duplicate candidates clue $clue_cands and $clue ((hopefully) harmless)"
+                    -message => "Duplicate candidates clue $clue_cands"
+                                . " and $clue ((hopefully) harmless)"
                 );
             }
             $clue_cands .= $clue;    # ??
@@ -815,6 +833,9 @@ sub recode_clues {
 } ## end sub recode_clues
 
 # return the names of the given objects as a string
+# This is a dev. tool to inspect the erroneous result
+# of a strategy sub. Tries to help identify faulty
+# parameters. May also be helpful for other lists.
 #   $namestring = names(list of cells and/or units);
 #
 sub names {
@@ -830,7 +851,7 @@ sub names {
     );
 }
 
-# Show message in dialog
+# Show message in messageBox widget
 #   showmessage(message_lines);
 #
 sub showmessage {

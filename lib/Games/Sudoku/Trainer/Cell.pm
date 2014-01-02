@@ -10,7 +10,7 @@ our @rows;     # row objects		(1 .. 9)
 
 package Games::Sudoku::Trainer::Cell;
 
-use version; our $VERSION = qv('0.0.1');    # PBP
+use version; our $VERSION = qv('0.0.2');    # PBP
 
 # constructor for cell objects
 #
@@ -23,7 +23,7 @@ sub new {
     my $block = int( ( $col - 1 ) / 3 ) + 3 * int( ( $row - 1 ) / 3 ) + 1;
 
     # Property Siblings is not in this list. Its construction must be
-    # delayed (in module Constant_structures) until all cells are created
+    # delayed (in module Const_structs) until all cells are created
     my @props = (    # cell properties
         'Name',       "r${row}c$col",
         'Cell_num',   $cell_idx,
@@ -54,7 +54,7 @@ sub Candidates { return $_[0]->{Candidates} }
 # Getter for arrays (return a copy of the array)
 sub get_Containers { return @{ $_[0]->{Containers} } }
 
-# setter for Containers (called from Constant_structures::define_objects)
+# setter for Containers (called from Const_structs::define_objects)
 #
 sub set_Containers {
     my $self = shift;
@@ -65,7 +65,7 @@ sub set_Containers {
 }
 
 # setter for Siblings property
-#   called from Constant_structures::define_siblings
+#   called from Const_structs::define_siblings
 #
 sub set_Siblings {
     my $class    = shift;
@@ -144,7 +144,8 @@ sub exclude_candidate {
     foreach my $sibl_unit ( $self->get_Containers ) {
         $sibl_unit->remove_Cand_cell( $digt, $self );
     }
-    GUI::exclude_cand( $self, $digt );    # change color on board
+    # change color on the board
+    Games::Sudoku::Trainer::GUI::exclude_cand( $self, $digt );
     return 1;
 }
 
@@ -176,17 +177,19 @@ sub by_name {
 
     unless ( defined $name ) {
         my @trace = caller(0);
-        Run::code_err(
+        Games::Sudoku::Trainer::Run::code_err(
             "Undefined cell name provided\nby file $trace[1], line $trace[2]\n"
         );
-        GUI::quit();
+        Games::Sudoku::Trainer::GUI::quit();
     }
     my ( $rownum, $colnum ) = ( $name =~ /^r(\d)c(\d)$/ );
     unless ($colnum) {
         my @trace = caller(0);
-        Run::code_err( "Invalid cell row or column number provided"
-              . "\nby file $trace[1], line $trace[2]\n" );
-        GUI::quit();
+        Games::Sudoku::Trainer::Run::code_err(
+		  "Invalid cell row or column number provided"
+          . "\nby file $trace[1], line $trace[2]\n"
+		);
+        Games::Sudoku::Trainer::GUI::quit();
     }
     return Games::Sudoku::Trainer::Cell->by_pos( $rownum, $colnum );
 }
@@ -201,9 +204,11 @@ sub by_pos {
 
         # direct call of code_err avoids the silly error window of Perl/Tk
         my @trace = caller(0);
-        Run::code_err( "Invalid cell row or column number provided"
-              . "\nby file $trace[1], line $trace[2]\n" );
-        GUI::quit();
+        Games::Sudoku::Trainer::Run::code_err(
+		  "Invalid cell row or column number provided"
+          . "\nby file $trace[1], line $trace[2]\n"
+		);
+        Games::Sudoku::Trainer::GUI::quit();
     };
     return $cells[ 9 * ( $rownum - 1 ) + $colnum ];
 }

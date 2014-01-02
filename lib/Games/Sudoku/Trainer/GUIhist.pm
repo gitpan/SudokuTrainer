@@ -4,7 +4,7 @@ use warnings;
 
 package Games::Sudoku::Trainer::GUIhist;
 
-use version; our $VERSION = qv('0.0.1');    # PBP
+use version; our $VERSION = qv('0.0.2');    # PBP
 
 my @history_raw;    # raw history of successful strategies
 
@@ -168,7 +168,8 @@ sub hist_details {
     my $value_count;
     foreach my $found_info_ref (@history_raw) {
         my $strategy      = $found_info_ref->[0];
-        my $clues_all_ref = GUI::recode_clues( $found_info_ref->[2] );
+        my $clues_all_ref = 
+		  Games::Sudoku::Trainer::GUI::recode_clues( $found_info_ref->[2] );
         $hl->add($found_info_ref);
         $hl->itemCreate( $found_info_ref, 0,
             -text => $found_info_ref->[1] eq 'insert' ? ++$value_count : '' );

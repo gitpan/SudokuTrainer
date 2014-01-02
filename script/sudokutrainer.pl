@@ -15,12 +15,12 @@ our @lines;     # all line objects	(0 .. 17)  rows and colums
 
 package main;
 
-use version; our $VERSION = qv('0.0.1');    # PBP
+use version; our $VERSION = qv('0.0.2');    # PBP
 
 BEGIN {
     use Games::Sudoku::Trainer::Cell;
     use Games::Sudoku::Trainer::Unit;
-    use Games::Sudoku::Trainer::Constant_structures;
+    use Games::Sudoku::Trainer::Const_structs;
     use Games::Sudoku::Trainer::Priorities;
     use Games::Sudoku::Trainer::Found_info;
     use Games::Sudoku::Trainer::Strategies;
@@ -31,13 +31,13 @@ BEGIN {
     use Games::Sudoku::Trainer::Check_pause;
     use Games::Sudoku::Trainer::Run;
 }
-Constant_structures::define_objects();
+Games::Sudoku::Trainer::Const_structs::define_objects();
 
 push( @units, @rows[ 1 .. 9 ], @cols[ 1 .. 9 ], @blocks[ 1 .. 9 ] );
 @lines = @units[ 0 .. 17 ];
 
-Constant_structures::define_crossRowCol();
-Constant_structures::define_crossLineBlock();
+Games::Sudoku::Trainer::Const_structs::define_crossRowCol();
+Games::Sudoku::Trainer::Const_structs::define_crossLineBlock();
 
 Tk::MainLoop();
 

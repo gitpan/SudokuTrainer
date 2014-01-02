@@ -10,9 +10,9 @@ our @cells;    # cell objects		(1 .. 81)
 # IO routines for sudoku puzzles
 #-----------------------------------------------------------------------
 
-package Write_puzzle;
+package Games::Sudoku::Trainer::Write_puzzle;
 
-use version; our $VERSION = qv('0.0.1');    # PBP
+use version; our $VERSION = qv('0.0.2');    # PBP
 
 # write the current state of the sudoku puzzle
 #	write_result($outfile);
@@ -36,7 +36,7 @@ sub write_result {
 sub write_initial {
     my $outfile = shift;
 
-    my $gamestring = Run::initial_puzzle();
+    my $gamestring = Games::Sudoku::Trainer::Run::initial_puzzle();
     $gamestring =~ tr/[1-9]/-/c;    # convert all placeholders to '-'
     _write_puzzle( $outfile, [ split( '', $gamestring ) ] );
     return;
@@ -48,8 +48,10 @@ sub write_initial {
 sub _write_puzzle {
     my ( $outfile, $puzzle_chars_ref ) = @_;
 
-    open( my $out, '>', $outfile )
-      or do { Run::user_err("Cannot open $outfile:\n$!"); return };
+    open( my $out, '>', $outfile )  or  do {
+	  Run::user_err("Cannot open $outfile:\n$!");
+	  return;
+	};
     for ( my $pos = 0 ; $pos < $#$puzzle_chars_ref ; $pos += 9 ) {
 
         # for better human readability

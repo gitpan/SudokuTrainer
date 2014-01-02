@@ -8,12 +8,13 @@ use warnings;
 
 package Games::Sudoku::Trainer::GUIdetails;
 
-use version; our $VERSION = qv('0.0.1');    # PBP
+use version; our $VERSION = qv('0.0.2');    # PBP
 
 # Private class for module Games::Sudoku::Trainer::GUIdetails.
 # Each Clues object holds the info for 1 row in the strategy details dialog,
 # i.e. for 1 of the 3 clues types: units, cands, cells
 #
+#package Games::Sudoku::Trainer::Clues;
 package Clues;
 
 sub new {    # constructor for Clues objects
@@ -56,7 +57,7 @@ sub incr_Uncov_count {
     return ++$self->{Uncov_count};
 }
 
-package GUI;
+package Games::Sudoku::Trainer::GUI;
 our $details_bt;    # the Show details Button
 
 package Games::Sudoku::Trainer::GUIdetails;
@@ -116,7 +117,8 @@ sub build_strat_details {
 #
 sub _fill_details {
     my $clues_all_ref =
-      GUI::recode_clues( Games::Sudoku::Trainer::Pause->Info_ref->[2] );
+      Games::Sudoku::Trainer::GUI::recode_clues(
+ 	    Games::Sudoku::Trainer::Pause->Info_ref->[2] );
     my %clues_all = %$clues_all_ref;
     foreach my $row ( 0 .. $#all_types ) {
         my $type      = $all_types[$row];

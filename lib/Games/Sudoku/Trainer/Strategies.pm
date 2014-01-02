@@ -12,9 +12,9 @@ our @blocks;    # block objects		(1 .. 9)
 our @units;     # all unit objects	(0 .. 26)  rows, colums, and blocks
 our @lines;     # all line objects	(0 .. 17)  rows and colums
 
-package Strategies;
+package Games::Sudoku::Trainer::Strategies;
 
-use version; our $VERSION = qv('0.0.1');    # PBP
+use version; our $VERSION = qv('0.0.2');    # PBP
 
 use List::MoreUtils;
 
@@ -23,7 +23,7 @@ use List::MoreUtils;
 # strategy is successful. The info about the found hit is returned as an
 # anonymous array, which is then passed to module Found_info, which makes
 # an object of it.
-# Called from sub Run::run, the main loop of this program.
+# Called from sub Run::_run_puzzle, the main loop of this program.
 #
 # At this step, strategy Full house (which has always highest priority) has
 # already been tried. See sub full_house for details.
@@ -878,7 +878,8 @@ sub _cand_cells {
     my @trace = caller(0);
     die "3\nProblem in file ", basename( $trace[1] ), " at line $trace[2]",
       "\nExpected $expect_count cells with candidate $digit in ",
-      defined $unit ? 'unit ' . $unit->Name : GUI::names(@cell_list),
+      defined $unit ? 'unit ' . $unit->Name
+     	            : Games::Sudoku::Trainer::GUI::names(@cell_list),
       ', found ', scalar @found, "\n";
 }
 

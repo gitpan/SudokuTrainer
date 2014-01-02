@@ -8,9 +8,9 @@ package main;
 our @cells;    # cell objects		(1 .. 81)
 our @units;    # all unit objects	(0 .. 26)  rows, colums, and blocks
 
-package Run;
+package Games::Sudoku::Trainer::Run;
 
-use version; our $VERSION = qv('0.0.1');    # PBP
+use version; our $VERSION = qv('0.0.2');    # PBP
 
 use Getopt::Long;
 use Carp;
@@ -33,7 +33,7 @@ sub initialize_and_start {
         _verify_puzzle();
         $testmode and Games::Sudoku::Trainer::Pause->setMode('non-stop');
         $testmode or Games::Sudoku::Trainer::Check_pause::pause();
-        GUI::set_status('');
+        Games::Sudoku::Trainer::GUI::set_status('');
         _run_puzzle();
     };
     if ($@) {
@@ -72,10 +72,10 @@ sub initialize_and_start {
             Tk::exit;
         }
         if ( $err_type != 2 ) {
-            GUI::button_state( 'Run', 'disable' );
-            GUI::set_exit_on_delete();
+            Games::Sudoku::Trainer::GUI::button_state( 'Run', 'disable' );
+            Games::Sudoku::Trainer::GUI::set_exit_on_delete();
         }
-        GUI::showmessage(
+        Games::Sudoku::Trainer::GUI::showmessage(
             -title   => $title,
             -icon    => $icon,
             -message => $eval_err,
@@ -132,12 +132,12 @@ sub _init_puzzle {
                 next;
             }
             $#ARGV = 0;    # ignore all but first
-            GUI::show_filename( $ARGV[0] );
+            Games::Sudoku::Trainer::GUI::show_filename( $ARGV[0] );
             @game = <>;
             undef @ARGV;
         }
         else {
-            @game = GUI::get_initialpuzzle();
+            @game = Games::Sudoku::Trainer::GUI::get_initialpuzzle();
             next unless @game;    # no file or empty file
         }
 
@@ -208,10 +208,11 @@ sub _insert_presets {
         $found_info_ref = shift(@found);
         ( $cell, $digit, $strategy ) = @$found_info_ref;
         $cell->insert_digit($digit);
-        GUI::display_cellvalue( $cell->Row_num, $cell->Col_num, $digit,
-            $strategy );
+        Games::Sudoku::Trainer::GUI::display_cellvalue(
+		    $cell->Row_num, $cell->Col_num, $digit, $strategy, 
+		);
     }
-    GUI::set_status("Done presetting values");
+    Games::Sudoku::Trainer::GUI::set_status("Done presetting values");
     Games::Sudoku::Trainer::Pause->setMode('single-step');
 
     # look for full house that is caused by presetting
@@ -219,7 +220,7 @@ sub _insert_presets {
     foreach my $unit (@units) {
         my @members = $unit->active_Members;
         next unless ( @members == 1 );
-        Strategies::full_house( $members[0] );
+        Games::Sudoku::Trainer::Strategies::full_house( $members[0] );
     }
     return;
 }
@@ -269,7 +270,7 @@ sub _verify_puzzle {
           or die "1\n$errhead\nNo candidate left for cell ", $cell->Name,
           "\n";
     }
-    GUI::button_state( 'Run', 'enable' );
+    Games::Sudoku::Trainer::GUI::button_state( 'Run', 'enable' );
     return;
 } ## end sub _verify_puzzle
 
@@ -291,7 +292,7 @@ sub _run_puzzle {
     my ( $cell, $digit, $strategy );
 
     unless (@found) {
-        Strategies::try_strategies();
+        Games::Sudoku::Trainer::Strategies::try_strategies();
         @found = Games::Sudoku::Trainer::Found_info->getall();
     }
     while (@found) {
@@ -301,10 +302,12 @@ sub _run_puzzle {
             ( $digit, $cell ) = @{ $found_info_ref->[3] };
             next if ( $cell->Value );    # already found
             Games::Sudoku::Trainer::Check_pause::check_pause($found_info_ref);
-            GUI::display_cellvalue( $cell->Row_num, $cell->Col_num,
-                $digit, $strategy );
+            Games::Sudoku::Trainer::GUI::display_cellvalue( 
+			    $cell->Row_num, $cell->Col_num,
+                $digit, $strategy 
+            );
             $cell->insert_digit($digit);
-            Strategies::full_house($cell);
+            Games::Sudoku::Trainer::Strategies::full_house($cell);
 
         }
         else {                           # exclude cand.s
@@ -329,7 +332,7 @@ sub _run_puzzle {
             # last try if not all values found
             my $not_done = first { $_->Value == 0 } @cells[ 1 .. 81 ];
             if ($not_done) {
-                Strategies::try_strategies();
+                Games::Sudoku::Trainer::Strategies::try_strategies();
                 @found = Games::Sudoku::Trainer::Found_info->getall();
                 last if not @found;
             }
@@ -337,15 +340,16 @@ sub _run_puzzle {
     }
 
     if ( ( my $valuecount = grep { $_->Value } @cells[ 1 .. 81 ] ) == 81 ) {
-        GUI::set_status('Sudoku puzzle is solved');
+        Games::Sudoku::Trainer::GUI::set_status('Sudoku puzzle is solved');
         $testmode and print "found all\n";
     }
     else {
-        GUI::set_status('Sorry - cannot find more');
+        Games::Sudoku::Trainer::GUI::set_status('Sorry - cannot find more');
         $testmode and print 'missing ', 81 - $valuecount, "\n";
     }
-    GUI::button_state( 'Run', 'disable' );    # disable the Run button
-    GUI::set_exit_on_delete();
+    # disable the Run button
+    Games::Sudoku::Trainer::GUI::button_state( 'Run', 'disable' );
+    Games::Sudoku::Trainer::GUI::set_exit_on_delete();
     return;
 } ## end sub _run_puzzle
 
@@ -357,9 +361,10 @@ sub initial_puzzle {
 }
 
 sub data_err {
-    GUI::button_state( 'Run', 'disable' );    # disable the Run button
+    # disable the Run button
+    Games::Sudoku::Trainer::GUI::button_state( 'Run', 'disable' );
     if ($testmode) { die "1\n@_\n" }
-    GUI::showmessage(
+    Games::Sudoku::Trainer::GUI::showmessage(
         -title   => 'Data error',
         -message => "@_",
         -icon    => 'error'
@@ -369,7 +374,7 @@ sub data_err {
 
 sub user_err {
     if ($testmode) { die "2\n@_\n" }
-    GUI::showmessage(
+    Games::Sudoku::Trainer::GUI::showmessage(
         -title   => 'User error',
         -message => "@_",
         -icon    => 'warning'
@@ -378,9 +383,10 @@ sub user_err {
 }
 
 sub code_err {
-    GUI::button_state( 'Run', 'disable' );    # disable the Run button
+    # disable the Run button
+    Games::Sudoku::Trainer::GUI::button_state( 'Run', 'disable' );
     if ($testmode) { die "3\n@_\n" }
-    GUI::showmessage(
+    Games::Sudoku::Trainer::GUI::showmessage(
         -title   => 'Code error',
         -message => "@_",
         -icon    => 'error'
