@@ -12,7 +12,7 @@ our @blocks;    # block objects     (1 .. 9)
 
 package Games::Sudoku::Trainer::Const_structs;
 
-use version; our $VERSION = qv('0.0.2');    # PBP
+use version; our $VERSION = qv('0.0.3');    # PBP
 
 # globals of package Const_structs
 # intersection of units
@@ -28,17 +28,17 @@ sub define_objects {
 
     # build row objects
     foreach my $idx ( 1 .. 9 ) {
-        $rows[$idx] = Row->new($idx);
+        $rows[$idx] = Games::Sudoku::Trainer::Row->new($idx);
     }
 
     # build col objects
     foreach my $idx ( 1 .. 9 ) {
-        $cols[$idx] = Col->new($idx);
+        $cols[$idx] = Games::Sudoku::Trainer::Col->new($idx);
     }
 
     # build block objects
     foreach my $idx ( 1 .. 9 ) {
-        $blocks[$idx] = Block->new($idx);
+        $blocks[$idx] = Games::Sudoku::Trainer::Block->new($idx);
     }
 
     # reset all containers - replace indices by unit objects

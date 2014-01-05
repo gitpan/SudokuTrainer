@@ -36,6 +36,7 @@ README
 script/enter_presets.pl
 script/sudokutrainer.pl
 t/02_examples.t
+t/03_no_say.t
 t/all_strats_code.t
 t/cwd.t
 t/examples.t

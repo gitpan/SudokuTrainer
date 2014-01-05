@@ -12,7 +12,7 @@ our @blocks;    # block objects		(1 .. 9)
 
 package Games::Sudoku::Trainer::Unit;
 
-use version; our $VERSION = qv('0.0.2');    # PBP
+use version; our $VERSION = qv('0.0.3');    # PBP
 
 sub new {                                   # constructor for unit objects
     my $class = shift;
@@ -103,13 +103,16 @@ sub crossline {
     my $self = shift;
     my $cell = shift;
 
-    return ref $self eq 'Row'
+	my $unittype = ref $self;
+	$unittype =~ s/.*::(\w+)$/$1/;
+    return $unittype eq 'Row'
       ? $cols[ $cell->Col_num ]
       : $rows[ $cell->Row_num ];
 }
 
 #====================================================================
-package Row;
+#package Row;
+package Games::Sudoku::Trainer::Row;
 
 use base qw/Games::Sudoku::Trainer::Unit/;
 
@@ -133,15 +136,18 @@ sub new {    # constructor for row objects
 sub crosssection {
 	my ( $self, $unit2 ) = @_;
 
+	my $unittype = ref $unit2;
+	$unittype =~ s/.*::(\w+)$/$1/;
 	return
-		ref $unit2 eq 'Row' ? ()
-	  : ref $unit2 eq 'Col'
+		$unittype eq 'Row' ? ()
+	  : $unittype eq 'Col'
 	  ? ( Games::Sudoku::Trainer::Const_structs::crossRowCol( $self, $unit2 ) )
 	  : @{ Games::Sudoku::Trainer::Const_structs::crossRowBlock( $self, $unit2 ) };
 }
 
 #====================================================================
-package Col;
+#package Col;
+package Games::Sudoku::Trainer::Col;
 
 use base qw/Games::Sudoku::Trainer::Unit/;
 
@@ -166,15 +172,18 @@ sub new {    # constructor for col objects
 sub crosssection {
 	my ( $self, $unit2 ) = @_;
 
+	my $unittype = ref $unit2;
+	$unittype =~ s/.*::(\w+)$/$1/;
 	return
-	  ref $unit2 eq 'Row'
+	  $unittype eq 'Row'
 	  ? ( Games::Sudoku::Trainer::Const_structs::crossRowCol( $unit2, $self ) )
-	  : ref $unit2 eq 'Col' ? ()
+	  : $unittype eq 'Col' ? ()
 	  :   @{ Games::Sudoku::Trainer::Const_structs::crossColBlock( $self, $unit2 ) };
 }
 
 #====================================================================
-package Block;
+#package Block;
+package Games::Sudoku::Trainer::Block;
 
 use base qw/Games::Sudoku::Trainer::Unit/;
 
@@ -197,10 +206,13 @@ sub new {    # constructor for block objects
 #
 sub crosssection {
 	my ( $self, $unit2 ) = @_;
+
+	my $unittype = ref $unit2;
+	$unittype =~ s/.*::(\w+)$/$1/;
 	return
-	  ref $unit2 eq 'Row'
+	  $unittype eq 'Row'
 	  ? @{ Games::Sudoku::Trainer::Const_structs::crossRowBlock( $unit2, $self ) }
-	  : ref $unit2 eq 'Col'
+	  : $unittype eq 'Col'
 	  ? @{ Games::Sudoku::Trainer::Const_structs::crossColBlock( $unit2, $self ) }
 	  : ();
 }

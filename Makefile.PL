@@ -12,7 +12,7 @@ WriteMakefile
   'VERSION_FROM' => 'lib/Games/Sudoku/Trainer/GUI.pm',
   'PREREQ_PM' => {
                    'List::MoreUtils' => 0,
-                   'Tk' => '804.029',
+                   'Tk' => 0,
                    'Encode' => 0
                  }
 )

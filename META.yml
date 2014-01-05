@@ -13,13 +13,10 @@ meta-spec:
   version: 1.4
 name: SudokuTrainer
 provides:
-  Block:
-    file: lib/Games/Sudoku/Trainer/Unit.pm
-    version: 0
   Clues:
     file: lib/Games/Sudoku/Trainer/GUIdetails.pm
     version: 0
-  Col:
+  Games::Sudoku::Trainer::Block:
     file: lib/Games/Sudoku/Trainer/Unit.pm
     version: 0
   Games::Sudoku::Trainer::Cell:
@@ -28,15 +25,18 @@ provides:
   Games::Sudoku::Trainer::Check_pause:
     file: lib/Games/Sudoku/Trainer/Check_pause.pm
     version: v0.0.1
+  Games::Sudoku::Trainer::Col:
+    file: lib/Games/Sudoku/Trainer/Unit.pm
+    version: 0
   Games::Sudoku::Trainer::Const_structs:
     file: lib/Games/Sudoku/Trainer/Const_structs.pm
-    version: v0.0.2
+    version: v0.0.3
   Games::Sudoku::Trainer::Found_info:
     file: lib/Games/Sudoku/Trainer/Found_info.pm
     version: v0.0.1
   Games::Sudoku::Trainer::GUI:
     file: lib/Games/Sudoku/Trainer/GUI.pm
-    version: 0
+    version: v0.0.3
   Games::Sudoku::Trainer::GUIdetails:
     file: lib/Games/Sudoku/Trainer/GUIdetails.pm
     version: v0.0.2
@@ -48,33 +48,33 @@ provides:
     version: v0.0.2
   Games::Sudoku::Trainer::GUIprio:
     file: lib/Games/Sudoku/Trainer/GUIprio.pm
-    version: 0
+    version: v0.0.3
   Games::Sudoku::Trainer::Pause:
     file: lib/Games/Sudoku/Trainer/Pause.pm
     version: v0.0.1
   Games::Sudoku::Trainer::Priorities:
     file: lib/Games/Sudoku/Trainer/Priorities.pm
     version: v0.0.1
+  Games::Sudoku::Trainer::Row:
+    file: lib/Games/Sudoku/Trainer/Unit.pm
+    version: 0
   Games::Sudoku::Trainer::Run:
     file: lib/Games/Sudoku/Trainer/Run.pm
     version: v0.0.2
   Games::Sudoku::Trainer::Strategies:
     file: lib/Games/Sudoku/Trainer/Strategies.pm
-    version: v0.0.2
+    version: v0.0.3
   Games::Sudoku::Trainer::Unit:
     file: lib/Games/Sudoku/Trainer/Unit.pm
-    version: v0.0.2
+    version: v0.0.3
   Games::Sudoku::Trainer::Write_puzzle:
     file: lib/Games/Sudoku/Trainer/Write_puzzle.pm
     version: v0.0.2
-  Row:
-    file: lib/Games/Sudoku/Trainer/Unit.pm
-    version: 0
 requires:
   Encode: 0
   List::MoreUtils: 0
-  Tk: 804.029
+  Tk: 0
   perl: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: v0.000.001
+version: v0.000.003

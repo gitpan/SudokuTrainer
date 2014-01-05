@@ -17,7 +17,7 @@ say "distrib $distrib   distdir $distdir";
 
 my %args = (
     dist_name           => "$distro",
-    dist_version        => '0.000.001',
+    dist_version        => '0.000.003',
 	# Ohne Par. module_name kommt bei den Kommandos "perl Build.PL", 
 	# "Build disttest" und "Build dist" die (sachlich falsche) Meldung
 	# "No 'module_name' # was provided ...". Außerdem ist nach der Inst.
@@ -44,7 +44,8 @@ my %args = (
     requires            => {
 # wait  'perl' => 5.008001,
         'perl' => 0,
-        'Tk' => 804.029,
+# wait  'Tk' => 804.029,
+        'Tk' => 0,
 #?        'Tk::Balloon' => 0,
 #?        'Tk::ErrorDialog' => 0,
         'Encode' => 0,

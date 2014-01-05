@@ -15,7 +15,7 @@ our @lines;     # all line objects	(0 .. 17)  rows and colums
 
 package main;
 
-use version; our $VERSION = qv('0.0.2');    # PBP
+use version; our $VERSION = qv('0.0.3');    # PBP
 
 BEGIN {
     use Games::Sudoku::Trainer::Cell;
@@ -309,9 +309,7 @@ needs the following modules (available from CPAN):
 
 =head1 BUGS
 
-There are no known bugs in this program. 
-
-Please report any bugs or feature requests to ... at rt.cpan.org, 
+Please report any bugs or feature requests to ??? at rt.cpan.org, 
 or through the web interface at http://rt.cpan.org.
 
 Please include the following material in the bug report:
@@ -343,9 +341,8 @@ Klaus Wittrock  (Wittrock#cpan.org)
 
 =head1 LICENCE AND COPYRIGHT
 
-Copyright (c) <year> <copyright holder> (<contact address>). All rights reserved.
+Copyright 2014 Klaus Wittrock. All Rights Reserved.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.
 

@@ -1,15 +1,15 @@
 use strict;
 use warnings;
 
-use version; our $VERSION = qv('0.0.2');    # PBP
-
 #-----------------------------------------------------------------------
 # change priorities dialog
 #-----------------------------------------------------------------------
 
-my $mw;    # main window
-
 package Games::Sudoku::Trainer::GUIprio;
+
+use version; our $VERSION = qv('0.0.3');    # PBP
+
+my $mw;    # main window
 
 # Show and process the priorities list
 # When done, recreate the priorities list

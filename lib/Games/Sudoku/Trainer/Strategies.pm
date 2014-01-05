@@ -14,7 +14,7 @@ our @lines;     # all line objects	(0 .. 17)  rows and colums
 
 package Games::Sudoku::Trainer::Strategies;
 
-use version; our $VERSION = qv('0.0.2');    # PBP
+use version; our $VERSION = qv('0.0.3');    # PBP
 
 use List::MoreUtils;
 
@@ -268,8 +268,10 @@ sub _naked_pair {
             # Are both cells in the same block? If so, we can settle them
             # here on the fly.
             # Otherwise they would get caught later by one (sometimes two) LBIs.
+				my $unittype = ref $unit;
+				$unittype =~ s/.*::(\w+)$/$1/;
                 my $units_par =    # units-parameter for sub _excl_cands_exept
-                  ( ref $unit ne 'Block'
+                  ( $unittype ne 'Block'
                       and $cell1->Block_num == $cell2->Block_num )
                   ? [ $unit, $blocks[ $cell1->Block_num ] ]
                   : $unit;
@@ -313,7 +315,7 @@ sub _skyscraper {
             @line_info{qw/cella cellb/} = @{ $cand_ref->[1] };
             $line_info{digit}           = $digit;
             my $linetype = ref $line_info{line};
-
+			$linetype =~ s/.*::(\w+)$/$1/;
             # the index of the cell in the containing row or column
             my $cell_idx = $linetype eq 'Row' ? 'Col_num' : 'Row_num';
             @line_info{qw/posa posb/} =
@@ -337,7 +339,7 @@ sub _skyscraper {
             next if ( ref $line1{line} ne ref $line2{line} );
 
             my $linetype = ref $line1{line};
-
+			$linetype =~ s/.*::(\w+)$/$1/;
             # the index of the cell in the containing row or column
             my $cell_idx = $linetype eq 'Row' ? 'Col_num' : 'Row_num';
 
@@ -424,12 +426,13 @@ sub _turbot_fish {
                         $block_cells[0] == $cross_cell
                       ? $block_cells[1]
                       : $block_cells[0];
-                    $target_cell =
-                      ref $line eq 'Row'
-                      ? Games::Sudoku::Trainer::Cell->by_pos( $chain2_cell->Row_num,
-                        $cross2->get_Index )
-                      : Games::Sudoku::Trainer::Cell->by_pos( $cross2->get_Index,
-                        $chain2_cell->Col_num );
+					my $unittype = ref $line;
+					$unittype =~ s/.*::(\w+)$/$1/;
+                    $target_cell = $unittype eq 'Row'
+                      ? Games::Sudoku::Trainer::Cell
+					      ->by_pos( $chain2_cell->Row_num, $cross2->get_Index )
+                      : Games::Sudoku::Trainer::Cell
+					      ->by_pos( $cross2->get_Index, $chain2_cell->Col_num );
                     $chain_cell = $cross_cell;
                     last TRYBOTH if $target_cell->has_candidate($digit);
                 }
@@ -466,8 +469,7 @@ sub _two_string_kite {
             my @rowblocknums = map( { $_->Block_num } @rowcells );
 
             # both cells of the row must be in different blocks
-            next
-              if $rowblocknums[0] == $rowblocknums[1];
+            next if $rowblocknums[0] == $rowblocknums[1];
             foreach my $col (@cols2) {
                 my @colcells = _cand_cells( $digit, $col, 2 );
                 my @colblocknums = map( { $_->Block_num } @colcells );
@@ -618,8 +620,10 @@ sub _unique_rectangle_type_2 {
                 foreach my $cell3 (@crosspairs) {
                     my $rownum = $cell3->Row_num();
                     my $cell2  = $pair2_ref->[0];
+					my $unittype = ref $line;
+					$unittype =~ s/.*::(\w+)$/$1/;
                     my $cell4 =
-                      ref $line eq 'Row'
+                       $unittype eq 'Row'
                       ? Games::Sudoku::Trainer::Cell->by_pos( $cell3->Row_num,
                         $cell2->Col_num )
                       : Games::Sudoku::Trainer::Cell->by_pos( $cell2->Row_num,
@@ -869,8 +873,9 @@ sub _cand_cells {
         @found     = @cell_list;
     }
     else {
-        ref $cell_list[0] eq 'Games::Sudoku::Trainer::Cell'
-          or die "3\n$cell_list[0] must be a cell";
+		my $unittype = ref $cell_list[0];
+		$unittype =~ s/.*::(\w+)$/$1/;
+        $unittype eq 'Cell'  or  die "3\n$cell_list[0] must be a cell";
         @found = grep { $_->has_candidate($digit) } @cell_list;
     }
 

@@ -6,7 +6,7 @@ use warnings;
 use Tk;
 use Tk::Balloon;
 
-use version; our $VERSION = qv('0.0.1');    # PBP
+use version; our $VERSION = qv('0.0.2');    # PBP
 
 # Usage:
 # perl enter_presets.pl
@@ -386,7 +386,6 @@ The dokumentation for L<SudokuTrainer|Games::Sudoku::Trainer::sudokutrainer.pl>.
 
 =head1 BUGS
 
-There are no known bugs in this module. 
 Please report bugs using <http://rt.cpan.org>. Patches are welcome.
 
 =head1 AUTHOR
@@ -395,7 +394,8 @@ Klaus Wittrock  (Wittrock#cpan.org)
 
 =head1 LICENCE AND COPYRIGHT
 
-Copyright 2013 Klaus Wittrock. All Rights Reserved.
+Copyright 2014 Klaus Wittrock. All Rights Reserved.
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
+

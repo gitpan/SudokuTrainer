@@ -8,13 +8,13 @@ package main;
 our @cells;    # cell objects		(1 .. 81)
 our @rows;     # row objects		(1 .. 9)
 
-use version; our $VERSION = qv('0.0.2');    # PBP
-
 # To reduce the size of this file, the code of some dialogs has been moved
 # to subordinate modules. These are loaded at their first usage, so this
 # will hopefully speed up a bit the startup time of the application.
 
 package Games::Sudoku::Trainer::GUI;
+
+use version; our $VERSION = qv('0.0.3');    # PBP
 
 use Tk;
 use Tk::ErrorDialog;
