@@ -14,7 +14,7 @@ our @rows;     # row objects		(1 .. 9)
 
 package Games::Sudoku::Trainer::GUI;
 
-use version; our $VERSION = qv('0.0.3');    # PBP
+use version; our $VERSION = qv('0.0.4');    # PBP
 
 use Tk;
 use Tk::ErrorDialog;
@@ -45,7 +45,7 @@ my $candsize  = 7;                         # size of a cand. square (pixels)
 my $cellsize  = 3 * ( $candsize + 3 ) - 1; # size of a sudoku cell
 my @all_types = qw/units cands cells/;     # all clue type names
 
-$mw = MainWindow->new();
+$mw = MainWindow->new(-title => 'SudokuTrainer');
 $mw->withdraw;
 _build_GUI();
 $details_bt->bind( '<Visibility>' 
@@ -239,7 +239,6 @@ sub _pausemode_menuitems {
             'cascade',
             'Value found',
             -menuitems => [
-
                 # This group of radiobuttons is unusual (but still legal), since
                 # it doesn't have the '-variable' option. The internal variable
                 # '$Tk::selectedButton' is used instead.
@@ -404,42 +403,25 @@ sub get_initialpuzzle {
     exit if $answer eq 'Cancel';
     my ($sel_idx) = $lb->curselection;
 
-    if ( !$sel_idx ) {
-#        my $initfile = $mw->getOpenFile;
-        my $initfile = $mw->getOpenFile(
-#            -filetypes =>
-#              [ [ 'Sudoku examples', '.sudo' ], [ 'All Files', ['*'] ], ],
-            -filetypes => [
-				[ 'Sudoku Files', '.sudo' ],
-				[ 'Text Files', [ '.txt', '.text' ] ],
-				[ 'All Files', ['*'] ],
-			],
-            -defaultextension => '.sudo',
-       );
+    if ( $sel_idx == 0) {   # Read from file
+        my $initfile = name_in();
         return unless $initfile;
-        use Encode;
-        $initfile = encode( 'iso-8859-1', $initfile );
-        open( my $SUDO, '<', $initfile ) or die("can't open $initfile: $!");
+        open( my $SUDO, '<', $initfile )
+          or do { Run::user_err("can't open $initfile:\n$!"); return };
         @game = <$SUDO>;
         close($SUDO);
         show_filename($initfile);
     }
-    elsif ( $sel_idx == 1 ) {
+    elsif ( $sel_idx == 1 ) {   # Insert manually
         @game = do { require FindBin; qx"perl $FindBin::Bin/enter_presets.pl" };
     }
-    elsif ( $sel_idx == 2 ) {
+    elsif ( $sel_idx == 2 ) {   # Read example file
         use File::Basename;
         my $sampledir = dirname(__FILE__) . '/examples';
         $sampledir or die "0\nExamples not properly installed\n";
-        $initfile = $mw->getOpenFile(
-            -initialdir => $sampledir,
-            -filetypes =>
-              [ [ 'Sudoku examples', '.sudo' ], [ 'All Files', ['*'] ], ],
-            -defaultextension => '.sudo',
-        );
+		my $options_ref = [-initialdir => $sampledir];
+        $initfile = name_in($options_ref);
         return unless $initfile;
-        use Encode;
-        $initfile = encode( 'iso-8859-1', $initfile );
         open( my $SUDO, '<', $initfile )
           or do { Run::user_err("can't open $initfile:\n$!"); return };
         @game = <$SUDO>;
@@ -472,8 +454,8 @@ sub show_filename {
 
     # change the visibility of candidate squares
     # callback for the "view ... cand.s" checkbuttons
-    #       labeltext: text of clicked checkbutton
-    #                  ('active candidates' or 'excluded candidates')
+    #   labeltext: text of clicked checkbutton
+    #              ('active candidates' or 'excluded candidates')
     #
     sub _show_candsquares {
         my $checklabel = shift;    # label of clicked checkbutton
@@ -665,7 +647,8 @@ sub quit {
     $answer eq 'No' and Tk::exit();
     _sudoku_save_as('initial');
     Games::Sudoku::Trainer::Check_pause::endpause();
-    Tk::exit();
+#    Tk::exit();
+    exit();
 }
 
 #-----------------------------------------------------------------------
@@ -700,13 +683,12 @@ sub _prio_load {
         [ 'All Files', ['*'] ],
     ];
 
-    my $infile = $mw->getOpenFile(
+	my $options_ref = [
         -filetypes        => $types,
         -defaultextension => '.prio',
-    );
+	];
+    my $infile = name_in($options_ref);
     return unless $infile;
-    use Encode;
-    $infile = encode( 'iso-8859-1', $infile );
     open( my $PRIO, '<', $infile )
       or do { Run::user_err("can't open $infile:\n$!"); return };
     my @strats = <$PRIO>;
@@ -831,6 +813,29 @@ sub recode_clues {
     @clue_cells and $clues_all{cells} = names(@clue_cells);
     return \%clues_all;
 } ## end sub recode_clues
+
+# ask user for input filename
+#   $infile = name_in($opts_array_ref);
+#
+sub name_in {
+	my $opts_ref = shift;
+
+	my %opts = (
+        -filetypes => [
+			[ 'Sudoku Files', '.sudo' ],
+			[ 'Text Files', [ '.txt', '.text' ] ],
+			[ 'All Files', ['*'] ],
+		],
+        -defaultextension => '.sudo',
+		# overwrite defaults (Modern Perl Chap. 3/Hash Idioms)
+	    $opts_ref ? @$opts_ref : (),
+	);
+    my $file = $mw->getOpenFile(%opts);
+    return unless $file;
+    use Encode;
+    $file = encode( 'iso-8859-1', $file );
+    return $file;
+}
 
 # return the names of the given objects as a string
 # This is a dev. tool to inspect the erroneous result

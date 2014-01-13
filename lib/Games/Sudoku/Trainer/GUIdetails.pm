@@ -8,14 +8,13 @@ use warnings;
 
 package Games::Sudoku::Trainer::GUIdetails;
 
-use version; our $VERSION = qv('0.0.2');    # PBP
+use version; our $VERSION = qv('0.0.3');    # PBP
 
 # Private class for module Games::Sudoku::Trainer::GUIdetails.
 # Each Clues object holds the info for 1 row in the strategy details dialog,
 # i.e. for 1 of the 3 clues types: units, cands, cells
 #
-#package Games::Sudoku::Trainer::Clues;
-package Clues;
+package Games::Sudoku::Trainer::Clues;
 
 sub new {    # constructor for Clues objects
     my $class = shift;
@@ -104,8 +103,9 @@ sub build_strat_details {
             $show_bt,
             -sticky => 'w',
         );
-        $clues_objs[$row] =
-          Clues->new( Show_btn => $show_bt, Uncov_clues => \$uncovered );
+        $clues_objs[$row] = Games::Sudoku::Trainer::Clues->new(
+		  Show_btn => $show_bt, Uncov_clues => \$uncovered 
+		);
     }
     $details_db->resizable( 0, 0 );    # freeze window size
     $details_bt->configure( -command => sub { $details_db->Show() } );
@@ -140,7 +140,7 @@ sub _fill_details {
     return;
 }
 
-# uncover one more clues of this type
+# uncover one more clue of this type
 #   callback of the corresponding "Show more" button
 #   _show_more($clues_obj_ref);
 #

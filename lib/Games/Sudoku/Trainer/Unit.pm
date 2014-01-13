@@ -12,7 +12,7 @@ our @blocks;    # block objects		(1 .. 9)
 
 package Games::Sudoku::Trainer::Unit;
 
-use version; our $VERSION = qv('0.0.3');    # PBP
+use version; our $VERSION = qv('0.0.4');    # PBP
 
 sub new {                                   # constructor for unit objects
     my $class = shift;
@@ -89,10 +89,26 @@ sub by_name {
         die "3\nInvalid unit name '$name' provided"
           . " by file $trace[1], line $trace[2]\n";
     }
+
+=for ignore
     my ($unitarray_ref) =
       grep( { lc( substr( ref $_->[$unitnum], 0, 1 ) ) eq $unitchar }
         ( \@rows, \@cols, \@blocks ) );
     return $unitarray_ref->[$unitnum];
+
+=cut
+
+	foreach my $units_refs ( \@rows, \@cols, \@blocks ) {
+		my $unitname = $units_refs->[$unitnum]->Name;
+#test 
+#$unitname = 'abc';
+		return $units_refs->[$unitnum] if $unitname eq $name;
+	}
+
+#    die "3\nCannot find unit with name '$name'";
+    Games::Sudoku::Trainer::Run->code_err 
+	  ("Cannot find unit with name '$name'");
+	die;
 }
 
 # return the line crossing the given line and passing through the given cell

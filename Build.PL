@@ -8,16 +8,9 @@ my $distro = 'SudokuTrainer';   # Name of the Distribution (without version suff
 my $distrib = 'Games::Sudoku::Trainer';   # Position of the Distribution
 (my $distdir = $distrib) =~ s#::#/#g;   # Dir. of the Distribution
 
-=for no_cwd
-use Cwd;
-say "cwd: ", getcwd();
-say "distrib $distrib   distdir $distdir";
-
-=cut
-
 my %args = (
     dist_name           => "$distro",
-    dist_version        => '0.000.003',
+    dist_version        => '0.000.004',
 	# Ohne Par. module_name kommt bei den Kommandos "perl Build.PL", 
 	# "Build disttest" und "Build dist" die (sachlich falsche) Meldung
 	# "No 'module_name' # was provided ...". Auﬂerdem ist nach der Inst.

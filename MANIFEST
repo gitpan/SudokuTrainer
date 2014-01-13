@@ -1,4 +1,5 @@
 Build.PL
+INSTALL
 lib/Games/Sudoku/Trainer/Cell.pm
 lib/Games/Sudoku/Trainer/Check_pause.pm
 lib/Games/Sudoku/Trainer/Const_structs.pm
@@ -35,10 +36,10 @@ MANIFEST			This list of files
 README
 script/enter_presets.pl
 script/sudokutrainer.pl
-t/02_examples.t
-t/03_no_say.t
+t/02_dir_examples_ex.t
+t/03_no_feature.t
+t/04_INSTALL_ex.t
 t/all_strats_code.t
-t/cwd.t
 t/examples.t
 Makefile.PL
 META.yml

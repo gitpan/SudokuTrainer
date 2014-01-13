@@ -29,10 +29,6 @@
       }
    },
    "provides" : {
-      "Clues" : {
-         "file" : "lib/Games/Sudoku/Trainer/GUIdetails.pm",
-         "version" : 0
-      },
       "Games::Sudoku::Trainer::Block" : {
          "file" : "lib/Games/Sudoku/Trainer/Unit.pm",
          "version" : 0
@@ -44,6 +40,10 @@
       "Games::Sudoku::Trainer::Check_pause" : {
          "file" : "lib/Games/Sudoku/Trainer/Check_pause.pm",
          "version" : "v0.0.1"
+      },
+      "Games::Sudoku::Trainer::Clues" : {
+         "file" : "lib/Games/Sudoku/Trainer/GUIdetails.pm",
+         "version" : 0
       },
       "Games::Sudoku::Trainer::Col" : {
          "file" : "lib/Games/Sudoku/Trainer/Unit.pm",
@@ -59,11 +59,11 @@
       },
       "Games::Sudoku::Trainer::GUI" : {
          "file" : "lib/Games/Sudoku/Trainer/GUI.pm",
-         "version" : "v0.0.3"
+         "version" : "v0.0.4"
       },
       "Games::Sudoku::Trainer::GUIdetails" : {
          "file" : "lib/Games/Sudoku/Trainer/GUIdetails.pm",
-         "version" : "v0.0.2"
+         "version" : "v0.0.3"
       },
       "Games::Sudoku::Trainer::GUIhist" : {
          "file" : "lib/Games/Sudoku/Trainer/GUIhist.pm",
@@ -99,7 +99,7 @@
       },
       "Games::Sudoku::Trainer::Unit" : {
          "file" : "lib/Games/Sudoku/Trainer/Unit.pm",
-         "version" : "v0.0.3"
+         "version" : "v0.0.4"
       },
       "Games::Sudoku::Trainer::Write_puzzle" : {
          "file" : "lib/Games/Sudoku/Trainer/Write_puzzle.pm",
@@ -112,5 +112,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "v0.000.003"
+   "version" : "v0.000.004"
 }
