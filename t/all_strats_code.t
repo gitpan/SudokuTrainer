@@ -5,7 +5,7 @@ use warnings;
 # for this purpose feed SudokuTrainer with an unsolvable puzzle
 # this forces SudokuTrainer to try all supported strategies
 
-use Test::More tests => 1;
+use Test::More;
 
 my $trainer = 'script/sudokutrainer.pl';
 -e $trainer  or  die "Kann $trainer nicht finden";
@@ -13,7 +13,11 @@ my $trainer = 'script/sudokutrainer.pl';
 # CPAN Authors FAQ
 use Tk;
 my $mw = eval { MainWindow->new };
-if (!$mw) { plan( skip_all => "Tk needs a graphical monitor" ); }
+if (!$mw) {
+	plan( skip_all => "Tk needs a graphical monitor" ); 
+} else {
+    plan tests => 1;
+}
 use Config;
 my $path_to_perl = $Config{perlpath};
 
