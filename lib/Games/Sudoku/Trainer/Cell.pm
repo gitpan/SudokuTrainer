@@ -8,9 +8,10 @@ package main;
 our @cells;    # cell objects		(1 .. 81)
 our @rows;     # row objects		(1 .. 9)
 
-package Games::Sudoku::Trainer::Cell;
+package
+    Games::Sudoku::Trainer::Cell;
 
-use version; our $VERSION = qv('0.0.2');    # PBP
+use version; our $VERSION = qv('0.0.3');    # PBP
 
 # constructor for cell objects
 #

@@ -6,7 +6,7 @@ use warnings;
 use Tk;
 use Tk::Balloon;
 
-use version; our $VERSION = qv('0.0.2');    # PBP
+use version; our $VERSION = qv('0.0.3');    # PBP
 
 # Usage:
 # perl enter_presets.pl
@@ -386,11 +386,17 @@ The dokumentation for L<SudokuTrainer|Games::Sudoku::Trainer::sudokutrainer.pl>.
 
 =head1 BUGS
 
-Please report bugs using <http://rt.cpan.org>. Patches are welcome.
+Please report any bugs or feature requests to Wittrock@cpan.org, 
+
+=for ignore
+or through the web interface at 
+https://rt.cpan.org/Ticket/Create.html?Queue=Games-Sudoku-Trainer.
+
+Patches are welcome.
 
 =head1 AUTHOR
 
-Klaus Wittrock  (Wittrock#cpan.org)
+Klaus Wittrock  (Wittrock@cpan.org)
 
 =head1 LICENCE AND COPYRIGHT
 

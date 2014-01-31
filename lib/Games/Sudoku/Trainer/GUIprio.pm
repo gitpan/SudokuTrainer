@@ -5,9 +5,10 @@ use warnings;
 # change priorities dialog
 #-----------------------------------------------------------------------
 
-package Games::Sudoku::Trainer::GUIprio;
+package
+    Games::Sudoku::Trainer::GUIprio;
 
-use version; our $VERSION = qv('0.0.3');    # PBP
+use version; our $VERSION = qv('0.0.4');    # PBP
 
 my $mw;    # main window
 

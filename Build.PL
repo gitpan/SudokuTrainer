@@ -10,7 +10,8 @@ my $distrib = 'Games::Sudoku::Trainer';   # Position of the Distribution
 
 my %args = (
     dist_name           => "$distro",
-    dist_version        => '0.000.005',
+#?    dist_version        => '0.000.005',
+    dist_version        => '0.00_06',
 	# Ohne Par. module_name kommt bei den Kommandos "perl Build.PL", 
 	# "Build disttest" und "Build dist" die (sachlich falsche) Meldung
 	# "No 'module_name' # was provided ...". Außerdem ist nach der Inst.
@@ -21,10 +22,10 @@ my %args = (
 	# Inst. normal benutzt werden.
     module_name         => "Games::Sudoku::Trainer::GUI",
     license             => 'perl',
-    dist_author         => q{Klaus Wittrock <KWittrock@cpan.org>},
+    dist_author         => q{Klaus Wittrock <Wittrock@cpan.org>},
 	dist_abstract       => 'Train on detecting successful Sudoku stategies.' . "\n"
 	  . 'Also help to get over an obstacle while solving a Sudoku puzzle.',
-	release_status      => 'testing',
+#?	release_status      => 'testing',
 	script_files        => 'script',
 
 	pod_files           => {
@@ -47,7 +48,7 @@ my %args = (
         'List::MoreUtils' => 0,
     },
 	configure_requires  => { 'Module::Build' => 0.38 },
-    create_makefile_pl => 'traditional',
+#dupl    create_makefile_pl => 'traditional',
 );
     $args{dist_version} !~ /_/  and  $args{create_makefile_pl} = "traditional";
 

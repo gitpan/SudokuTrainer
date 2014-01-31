@@ -12,9 +12,10 @@ our @rows;     # row objects		(1 .. 9)
 # to subordinate modules. These are loaded at their first usage, so this
 # will hopefully speed up a bit the startup time of the application.
 
-package Games::Sudoku::Trainer::GUI;
+package
+    Games::Sudoku::Trainer::GUI;
 
-use version; our $VERSION = qv('0.0.4');    # PBP
+use version; our $VERSION = qv('0.0.5');    # PBP
 
 use Tk;
 use Tk::ErrorDialog;

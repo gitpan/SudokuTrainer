@@ -10,9 +10,10 @@ our @rows;      # row objects		(1 .. 9)
 our @cols;      # col objects		(1 .. 9)
 our @blocks;    # block objects		(1 .. 9)
 
-package Games::Sudoku::Trainer::Unit;
+package
+    Games::Sudoku::Trainer::Unit;
 
-use version; our $VERSION = qv('0.0.4');    # PBP
+use version; our $VERSION = qv('0.0.5');    # PBP
 
 sub new {                                   # constructor for unit objects
     my $class = shift;
@@ -128,7 +129,8 @@ sub crossline {
 
 #====================================================================
 #package Row;
-package Games::Sudoku::Trainer::Row;
+package
+    Games::Sudoku::Trainer::Row;
 
 use base qw/Games::Sudoku::Trainer::Unit/;
 
@@ -163,7 +165,8 @@ sub crosssection {
 
 #====================================================================
 #package Col;
-package Games::Sudoku::Trainer::Col;
+package
+    Games::Sudoku::Trainer::Col;
 
 use base qw/Games::Sudoku::Trainer::Unit/;
 
@@ -199,7 +202,8 @@ sub crosssection {
 
 #====================================================================
 #package Block;
-package Games::Sudoku::Trainer::Block;
+package
+    Games::Sudoku::Trainer::Block;
 
 use base qw/Games::Sudoku::Trainer::Unit/;
 

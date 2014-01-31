@@ -15,7 +15,7 @@ our @lines;     # all line objects	(0 .. 17)  rows and colums
 
 package main;
 
-use version; our $VERSION = qv('0.0.3');    # PBP
+use version; our $VERSION = qv('0.0.4');    # PBP
 
 BEGIN {
     use Games::Sudoku::Trainer::Cell;
@@ -66,8 +66,8 @@ It does this in two areas:
 
 SudokuTrainer is not a Sudoku teacher.
 The user must know the strategy that he wants to train.
-People who don't know about Sudoku strategies may still use SudokuTrainer for the second purpose,
-just to get a new value for continuation.
+People who don't know about Sudoku strategies may still use SudokuTrainer for 
+the second purpose, just to get a new value for continuation.
 
 =head1 USAGE
 
@@ -112,19 +112,23 @@ The path to a file where a I<priority list> has been stored.
 
 =item * cell
 
-A cell is one of the 81 squares in a Sudoku board that will each finally show a digit from 1 to 9.
+A cell is one of the 81 squares in a Sudoku board that will each finally
+show a digit from 1 to 9.
 
 =item * row
 
-A row is a horizontal line of 9 cells. Rows are numbered from 1 to 9, top to bottom.
+A row is a horizontal line of 9 cells. Rows are numbered from 1 to 9,
+top to bottom.
 
 =item * column
 
-A column is a vertical line of 9 cells. Columns are numbered from 1 to 9, left to right.
+A column is a vertical line of 9 cells. Columns are numbered from 1 to 9,
+left to right.
 
 =item * block
 
-A block is one of the 9 3x3 subsquares of a Sudoku board. Blocks are numbered according to the following scheme:
+A block is one of the 9 3x3 subsquares of a Sudoku board. Blocks are
+numbered according to the following scheme:
 
     1 2 3
     4 5 6
@@ -140,9 +144,11 @@ A unit is either a line or a block.
 
 =item * candidate
 
-A digit is a candidate of a cell if it is currently not yet forbidden to use it as the value of the cell.
+A digit is a candidate of a cell if it is currently not yet forbidden
+to use it as the value of the cell.
 
-For more difficult Sudoku puzzles it may be helpful to inspect a list of all still possible (or already excluded) candidates. You may 
+For more difficult Sudoku puzzles it may be helpful to inspect a list of
+all still possible (or already excluded) candidates. You may 
 view the internal candidate list of SudokuTrainer for this purpose 
 (see section L<Games::Sudoku::Trainer::training.pod/View>).
 
@@ -291,7 +297,7 @@ needs the following modules (available from CPAN):
 
 =over 1
 
-=item * L<http://search.cpan.org/perldoc?Tk>
+=item * L<http://search.cpan.org/perldoc?Tk> (PerlE<sol>Tk)
 
 =item * L<http://search.cpan.org/perldoc?List::MoreUtils>
 
@@ -309,8 +315,20 @@ needs the following modules (available from CPAN):
 
 =head1 BUGS
 
-Please report any bugs or feature requests to ??? at rt.cpan.org, 
-or through the web interface at http://rt.cpan.org.
+Please report any bugs or feature requests to Wittrock@cpan.org, 
+or through the web interface at 
+http://rt.cpan.org.
+
+=for ignore
+bug-Games-Sudoku-Trainer [at] rt.cpan.org
+bug-Module-Build [at] rt.cpan.org
+bug-Test-Harness [at] rt.cpan.org
+bug-libwww-perl [at] rt.cpan.org
+or through the web interface at 
+https://rt.cpan.org/Ticket/Create.html?Queue=Games-Sudoku-Trainer-SudokuTrainer.
+http://rt.cpan.org/NoAuth/Bugs.html?Dist=File-Path
+http://rt.cpan.org/NoAuth/ReportBug.html?Queue=List-MoreUtils
+http://rt.cpan.org/NoAuth/Bugs.html?Dist=Module-Build
 
 Please include the following material in the bug report:
 
@@ -337,12 +355,18 @@ for code errors)
 
 =head1 AUTHOR
 
-Klaus Wittrock  (Wittrock#cpan.org)
+Klaus Wittrock  (Wittrock@cpan.org)
+
+=head1 ACKNOWLEDGEMENT
+
+Alex Becker pointed out to me several passages in the code that
+urgently needed improvement. He also encourages me repeatedly to
+use more OO techniques.
 
 =head1 LICENCE AND COPYRIGHT
 
 Copyright 2014 Klaus Wittrock. All Rights Reserved.
 
-This module is free software; you can redistribute it and/or
+This program is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
 

@@ -132,7 +132,9 @@ the name of the key point, then click the I<Run> button. The trainer will
 pause at the key point. Now select I<Pause mode | single step> and click the 
 I<Run> button. The trainer pauses at the next
 successful strategy. Try to find it with minimum help by the I<Details> button, 
-as is explained in the POD. Then click again the I<Run> button and try on 
+as is explained 
+in section L<Games::Sudoku::Trainer::training.pod/Train the strategy>.
+Then click again the I<Run> button and try on 
 the next strategy, and repeat this until the next value is found. 
 
 Repeat this whole step 

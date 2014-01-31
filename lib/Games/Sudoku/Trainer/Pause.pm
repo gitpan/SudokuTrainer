@@ -6,9 +6,10 @@ use warnings;
 #   A class without instances
 #   This class has been introduced to reduce the number of global variables
 
-package Games::Sudoku::Trainer::Pause;
+package
+    Games::Sudoku::Trainer::Pause;
 
-use version; our $VERSION = qv('0.0.1');    # PBP
+use version; our $VERSION = qv('0.0.2');    # PBP
 
 my $Mode             = '';                  # current pause mode
 my $Mode_restriction = '';                  # restriction of current pause mode

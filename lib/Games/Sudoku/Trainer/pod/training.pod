@@ -26,12 +26,13 @@ a unit or a cell.
 
 During a pause you may inspect the current state of the puzzle, use
 the menus (e. g. to change the pause mode), or try to detect the current 
-successful strategy. A  on the I<Run> button terminates the pause.
+successful strategy. A click on the I<Run> button terminates the pause.
 
 =item * Priorities
 
 Here you may adapt the priority list to your preferences by moving a selected 
-strategy up or down. You may also return to the default priority list.
+strategy (or a range of strategies) up or down. 
+You may also reload the default priority list.
 
 =item * History
 
@@ -103,7 +104,7 @@ when it first finds the selected strategy. It's time to train.
 
 You know that the displayed puzzle board is now in a state where it's possible to
 detect the strategy. So it's recommended that you try to find it without further
-help. If you succeed - congratulations! If you don't, you may  the
+help. If you succeed - congratulations! If you don't, you may click the
 I<Show details> button, which opens the Details window. It's recommended 
 here that you ask for only one
 more clue at a time, then try again to find the training strategy. At latest 

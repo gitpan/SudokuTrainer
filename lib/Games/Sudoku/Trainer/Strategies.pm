@@ -12,9 +12,10 @@ our @blocks;    # block objects		(1 .. 9)
 our @units;     # all unit objects	(0 .. 26)  rows, colums, and blocks
 our @lines;     # all line objects	(0 .. 17)  rows and colums
 
-package Games::Sudoku::Trainer::Strategies;
+package
+    Games::Sudoku::Trainer::Strategies;
 
-use version; our $VERSION = qv('0.0.3');    # PBP
+use version; our $VERSION = qv('0.0.4');    # PBP
 
 use List::MoreUtils;
 

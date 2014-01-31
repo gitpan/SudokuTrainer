@@ -1,3 +1,28 @@
+INSTALLATION PROLOGUE
+---------------------
+This section is relevant only for users that work on Windows with the
+Perl distribution ActivePerl.
+
+Newer versions of ActivePerl install the MinGW package and the dmake
+utility automatically when you use the shell commands cpan or cpanp for
+the first time. I observed this with version v5.16.3, so maybe you can
+ignore this section.
+
+Please look whether Tk (the Perl/Tk package) or gcc (a C++ compiler) is 
+installed. If none of them is present, choose one for install. In any 
+case, you will need administative privileges for this.
+
+Install gcc: Inside ppm, install the MinGW package. This will also install
+             the gcc compiler.
+
+Install Tk: In your browser, visit the website http://www.bribes.org/perl/.
+            On the bottom, select your repository (32 bit or 64 bit). In the
+            repository search for the "Tk" entry, copy the DOS command in it
+            and insert it in the DOS shell window. This command will add Tk
+            to the ppm repository of ActivePerl.
+
+
+
 INSTALLATION INSTRUCTIONS
 -------------------------
 
@@ -15,16 +40,16 @@ Use the shell command "cpanp -i Games::Sudoku::Trainer".
 
 -----------------
 For the following installation procedures you need a preliminary step:
-Visit the website ??????????
-http://search.cpan.org/~adamk/List-MoreUtils-0.33/lib/List/MoreUtils.pm
-http://search.cpan.org/xxxxxxx and download the distribution file:
+Visit the website
+http://search.cpan.org/~wittrock/SudokuTrainer-0.000.005-TRIAL/script/sudokutrainer.pl
+and download the distribution file, then unpack it:
 
-On Linux:   tar -xzf SudokuTrainer-0.000.001-TRIAL.tar.gz
+On Linux:   tar -xzf SudokuTrainer-0.000.005-TRIAL.tar.gz
 On Windows: Use a ZIP archiver program (e. g. winZIP or 7-Zip) to unpack the
             distribution file.
 			
 Finally enter the distribution directory:
-cd SudokuTrainer-0.000.001-TRIAL
+cd SudokuTrainer-0.000.005-TRIAL
 
 3. Module::Build
 ----------------
@@ -50,4 +75,11 @@ Enter the following commands, depending on your platform:
 	make                       dmake
 	make test                  dmake test
 	sudo make install          dmake install
+
+
+ACKNOWLEDGEMENT
+---------------
+Big parts of the installation instructions have been taken from the tutorial 
+http://wiki.perl-community.de/Wissensbasis/ModuleWieInstalliereIchEinModul,
+which was written by the German Perl forum www.perl-community.de.
 

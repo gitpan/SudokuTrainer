@@ -79,30 +79,6 @@ This version of SudokuTrainer supports the following strategies:
     XY Wing
 
 	
-INSTALLATION PROLOGUE
----------------------
-This section is relevant only for users that work on Windows with the
-Perl distribution ActivePerl.
-
-Newer versions of ActivePerl install the MinGW package and the dmake
-utility automatically when you use the shell commands cpan or cpanp for
-the first time. I observed this with version v5.16.3, so maybe you can
-ignore this section.
-
-Please look whether Tk (the Perl/Tk package) or gcc (a C++ compiler) is 
-installed. If none of them is present, choose one for install. In any 
-case, you will need administative privileges for this.
-
-Install gcc: Inside ppm, install the MinGW package. This will also install
-             the gcc compiler.
-
-Install Tk: In your browser, visit the website http://www.bribes.org/perl/.
-            On the bottom, select your repository (32 bit or 64 bit). In the
-            repository search for the "Tk" entry, copy the DOS command in it
-            and insert it in the DOS shell window. This command will add Tk
-            to the ppm repository of ActivePerl.
-
-			
 INSTALLATION
 ------------
 See the separate file INSTALL for instructions.
@@ -110,9 +86,9 @@ See the separate file INSTALL for instructions.
 
 STARTING SUDOKUTRAINER
 ----------------------
-On Linux:   env PERL5LIB path/to/perl/site/lib   ???????? to be tested!! 
-                                                 wohl + ...../perl/lib
-On Windows: sudokutrainer
+On Linux:   sudokutrainer.pl   (in any directory)
+
+On Windows: sudokutrainer      (in any directory)
 
 
 RESTRICTIONS
@@ -125,9 +101,3 @@ SudokuTrainer deals with classical 9x9 sudoku games only.
 
 SudokuTrainer is neither a sudoku teacher nor a sudoku player.
 
-
-ACKNOWLEDGEMENT
----------------
-Big parts of the installation instructions have been taken from the tutorial 
-http://wiki.perl-community.de/Wissensbasis/ModuleWieInstalliereIchEinModul,
-which was written by the German Perl forum www.perl-community.de.

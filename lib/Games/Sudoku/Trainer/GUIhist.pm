@@ -2,9 +2,10 @@ use strict;
 use warnings;
 #use feature qw( say );
 
-package Games::Sudoku::Trainer::GUIhist;
+package
+    Games::Sudoku::Trainer::GUIhist;
 
-use version; our $VERSION = qv('0.0.2');    # PBP
+use version; our $VERSION = qv('0.0.3');    # PBP
 
 my @history_raw;    # raw history of successful strategies
 

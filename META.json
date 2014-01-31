@@ -1,7 +1,7 @@
 {
    "abstract" : "Train on detecting successful Sudoku stategies.\nAlso help to get over an obstacle while solving a Sudoku puzzle.",
    "author" : [
-      "Klaus Wittrock <KWittrock@cpan.org>"
+      "Klaus Wittrock <Wittrock@cpan.org>"
    ],
    "dynamic_config" : 1,
    "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921",
@@ -29,88 +29,24 @@
       }
    },
    "provides" : {
-      "Games::Sudoku::Trainer::Block" : {
-         "file" : "lib/Games/Sudoku/Trainer/Unit.pm",
-         "version" : 0
-      },
-      "Games::Sudoku::Trainer::Cell" : {
-         "file" : "lib/Games/Sudoku/Trainer/Cell.pm",
-         "version" : "v0.0.2"
-      },
-      "Games::Sudoku::Trainer::Check_pause" : {
-         "file" : "lib/Games/Sudoku/Trainer/Check_pause.pm",
-         "version" : "v0.0.1"
-      },
-      "Games::Sudoku::Trainer::Clues" : {
+      "Games::Sudoku::Trainer::GUI" : {
          "file" : "lib/Games/Sudoku/Trainer/GUIdetails.pm",
          "version" : 0
-      },
-      "Games::Sudoku::Trainer::Col" : {
-         "file" : "lib/Games/Sudoku/Trainer/Unit.pm",
-         "version" : 0
-      },
-      "Games::Sudoku::Trainer::Const_structs" : {
-         "file" : "lib/Games/Sudoku/Trainer/Const_structs.pm",
-         "version" : "v0.0.3"
-      },
-      "Games::Sudoku::Trainer::Found_info" : {
-         "file" : "lib/Games/Sudoku/Trainer/Found_info.pm",
-         "version" : "v0.0.1"
-      },
-      "Games::Sudoku::Trainer::GUI" : {
-         "file" : "lib/Games/Sudoku/Trainer/GUI.pm",
-         "version" : "v0.0.4"
       },
       "Games::Sudoku::Trainer::GUIdetails" : {
          "file" : "lib/Games/Sudoku/Trainer/GUIdetails.pm",
-         "version" : "v0.0.3"
-      },
-      "Games::Sudoku::Trainer::GUIhist" : {
-         "file" : "lib/Games/Sudoku/Trainer/GUIhist.pm",
-         "version" : "v0.0.2"
-      },
-      "Games::Sudoku::Trainer::GUIpause_restrict" : {
-         "file" : "lib/Games/Sudoku/Trainer/GUIpause_restrict.pm",
-         "version" : "v0.0.2"
-      },
-      "Games::Sudoku::Trainer::GUIprio" : {
-         "file" : "lib/Games/Sudoku/Trainer/GUIprio.pm",
-         "version" : "v0.0.3"
-      },
-      "Games::Sudoku::Trainer::Pause" : {
-         "file" : "lib/Games/Sudoku/Trainer/Pause.pm",
-         "version" : "v0.0.1"
-      },
-      "Games::Sudoku::Trainer::Priorities" : {
-         "file" : "lib/Games/Sudoku/Trainer/Priorities.pm",
-         "version" : "v0.0.1"
-      },
-      "Games::Sudoku::Trainer::Row" : {
-         "file" : "lib/Games/Sudoku/Trainer/Unit.pm",
          "version" : 0
       },
       "Games::Sudoku::Trainer::Run" : {
          "file" : "lib/Games/Sudoku/Trainer/Run.pm",
          "version" : "v0.0.2"
-      },
-      "Games::Sudoku::Trainer::Strategies" : {
-         "file" : "lib/Games/Sudoku/Trainer/Strategies.pm",
-         "version" : "v0.0.3"
-      },
-      "Games::Sudoku::Trainer::Unit" : {
-         "file" : "lib/Games/Sudoku/Trainer/Unit.pm",
-         "version" : "v0.0.4"
-      },
-      "Games::Sudoku::Trainer::Write_puzzle" : {
-         "file" : "lib/Games/Sudoku/Trainer/Write_puzzle.pm",
-         "version" : "v0.0.2"
       }
    },
-   "release_status" : "stable",
+   "release_status" : "testing",
    "resources" : {
       "license" : [
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "v0.000.005"
+   "version" : "0.00_06"
 }

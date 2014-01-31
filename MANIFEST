@@ -37,10 +37,9 @@ README
 script/enter_presets.pl
 script/sudokutrainer.pl
 t/02_dir_examples_exists.t
-t/03_no_feature.t
 t/04_INSTALL_exists.t
-t/all_strats_code.t
 t/examples.t
-Makefile.PL
+xt/03_no_use_feature.t
+xt/all_strats_code.t
 META.yml
 META.json

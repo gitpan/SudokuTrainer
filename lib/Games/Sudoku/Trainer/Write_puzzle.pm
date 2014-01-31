@@ -10,9 +10,10 @@ our @cells;    # cell objects		(1 .. 81)
 # IO routines for sudoku puzzles
 #-----------------------------------------------------------------------
 
-package Games::Sudoku::Trainer::Write_puzzle;
+package
+    Games::Sudoku::Trainer::Write_puzzle;
 
-use version; our $VERSION = qv('0.0.2');    # PBP
+use version; our $VERSION = qv('0.0.3');    # PBP
 
 # write the current state of the sudoku puzzle
 #	write_result($outfile);
