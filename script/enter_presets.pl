@@ -319,7 +319,8 @@ This documentation refers to B<enter_presets> version 0.0.1
 
 =head1 USAGE 
 
-This program is called internally by L<SudokuTrainer|sudokutrainer.pl> when 
+This program is called internally by 
+L<SudokuTrainer|Games::Sudoku::Trainer::pod::sudokutrainer.pod> when 
 the user selects the option I<Enter manually> to create the initial puzzle.
 
 =head1 DESCRIPTION 
@@ -374,7 +375,7 @@ of the trainer.
 
 =head1 SEE ALSO 
 
-The dokumentation for L<SudokuTrainer|Games::Sudoku::Trainer::sudokutrainer.pl>.
+The dokumentation for L<SudokuTrainer|Games::Sudoku::Trainer::pod::sudokutrainer.pod>.
 
 =head1 DEPENDENCIES 
 

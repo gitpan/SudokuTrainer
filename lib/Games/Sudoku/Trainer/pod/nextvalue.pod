@@ -3,7 +3,7 @@
 This part of the documentation for SudokuTrainer aims at people that 
 just want some new value to get over an obstacle while solving a Sudoku 
 puzzle. If this isn't what you expected, please inspect 
-L<Games::Sudoku::Trainer::sudokutrainer.pod/GUIDE_TO_DOCUMENTATION>.
+L<Games::Sudoku::Trainer::pod::sudokutrainer.pod/GUIDE_TO_DOCUMENTATION>.
 
 =head1 INTRODUCTION
 
@@ -18,7 +18,7 @@ digit to a cell. Here this program SudokuTrainer can often help you.
 When starting SudokuTrainer you have to enter the Sudoku puzzle for 
 which you need help. Therefore you select the option C<Insert manually>. 
 If you cannot find out how the input works, you may read the 
-documentation L<here|Games::Sudoku::Trainer::enter_presets>. When finished 
+documentation L<here|Games::Sudoku::Trainer::pod::enter_presets.pod>. When finished 
 with the input you click the Button 
 I<Done> and thus reach the main window of SudokuTrainer. There you 
 should save the entered puzzle first, just in case you need it again later. 
@@ -62,10 +62,6 @@ L<EDIT A SUDOKU PUZZLE|/EDIT A SUDOKU PUZZLE>. Then select menu
 C<< Pause mode -> value found -> anywhere >> repeatedly until the value displayed 
 in the black frame wasn't already found by you. With this value you may try 
 to solve your Sudoku puzzle further.
-
-=for ignore
-L<EDIT A SUDOKU PUZZLE>. Then select menu 
-L<"EDIT A SUDOKU PUZZLE">. Then select menu 
 
 =head1 THE EASIEST STRATEGIES
 

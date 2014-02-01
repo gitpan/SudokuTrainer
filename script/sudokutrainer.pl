@@ -15,7 +15,7 @@ our @lines;     # all line objects	(0 .. 17)  rows and colums
 
 package main;
 
-use version; our $VERSION = qv('0.0.4');    # PBP
+use version; our $VERSION = qv('0.0.5');    # PBP
 
 BEGIN {
     use Games::Sudoku::Trainer::Cell;
@@ -93,7 +93,7 @@ A doubleclick on a choice will select it and
 close the selection window. When you select the choice 
 I<Insert manually> the utility program
 B<enter_presets.pl> gets started. See the documentation of 
-it at I<Games::Sudoku::Trainer::enter_presets.pod>. 
+it at L<Games::Sudoku::Trainer::pod::enter_presets.pod>. 
 After you entered the initial puzzle manually, 
 you should better save it. Chances are good that 
 you will need it several times. Corrections to 
@@ -150,7 +150,7 @@ to use it as the value of the cell.
 For more difficult Sudoku puzzles it may be helpful to inspect a list of
 all still possible (or already excluded) candidates. You may 
 view the internal candidate list of SudokuTrainer for this purpose 
-(see section L<Games::Sudoku::Trainer::training.pod/View>).
+(see section L<Games::Sudoku::Trainer::pod::training.pod/View>).
 
 =item * strategy
 
@@ -170,7 +170,7 @@ usually assigned a high priority.
 A B<priority list> is a list of all strategies (exept 
 I<Full house>), ordered by their priorities. The user may 
 rearrange the strategies, thus changing their priorities 
-(see section L<Games::Sudoku::Trainer::training.pod/Priorities>). 
+(see section L<Games::Sudoku::Trainer::pod::training.pod/Priorities>). 
 He may also save the priority list for later reuse.
 
 =back
@@ -211,7 +211,7 @@ communication with SudokuTrainer.
 
 =head2 Train a strategy
 
-The document L<Games::Sudoku::Trainer::training.pod> describes the 
+The document L<Games::Sudoku::Trainer::pod::training.pod> describes the 
 operation of SudokuTrainer from a user point of view.
 
 SudokuTrainer has a list of all strategies that it knows 
@@ -224,14 +224,14 @@ It's time to train.
 
 =head2 Overcome an obstacle
 
-The document L<Games::Sudoku::Trainer::obstacle.pod> 
+The document L<Games::Sudoku::Trainer::pod::obstacle.pod> 
 describes how the user 
 lets SudokuTrainer find the next value step by step. He can 
 comprehend each step with minimum help by SudokuTrainer.
 
 =head2 Get a further value
 
-The document L<Games::Sudoku::Trainer::nextvalue.pod> 
+The document L<Games::Sudoku::Trainer::pod::nextvalue.pod> 
 describes how the user 
 lets SudokuTrainer find value by value, until the find 
 hasn't been found by the user before.

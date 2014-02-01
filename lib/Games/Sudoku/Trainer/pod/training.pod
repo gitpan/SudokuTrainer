@@ -4,10 +4,10 @@ B<training.pod>
 
 =head1 PURPOSE
 
-This part of the documentation for SudokuTrainer aims at people that want 
+This part of the documentation for B<SudokuTrainer> aims at people that want 
 to use SudokuTrainer to train a certain Sudoku strategy. If this isn't what 
 you expected, please inspect 
-L<Games::Sudoku::Trainer::sudokutrainer.pod/GUIDE_TO_DOCUMENTATION>.
+L<Games::Sudoku::Trainer::pod::sudokutrainer.pod/GUIDE_TO_DOCUMENTATION>.
 
 =head1 THE MENU BAR 
 
@@ -66,14 +66,14 @@ candidates of the cells (positive resp. negative candidate list).
 
 =head2 Prerequites
 
-SudokuTrainer is not a Sudoku teacher, so you have to know the strategy which
+B<SudokuTrainer> is not a Sudoku teacher, so you have to know the strategy which
 you want to train. You also need an initial puzzle where SudokuTrainer will make use
 of that strategy when solving it. If in doubt, you may select pause mode I<non-
 stop>, press I<Run> and then inspect the list of I<History | Summary>.
 
 At the start of SudokuTrainer you are offered the choice 
 C<Read example file> (see 
-L<Games::Sudoku::Trainer::sudokutrainer.pod/OPTIONS>). 
+L<Games::Sudoku::Trainer::pod::sudokutrainer.pod/OPTIONS>). 
 Here you may select a puzzle from a collection of examples
 that are included in the distribution. These puzzles are named by the lowest 
 (probably most difficult) strategy that SudokuTrainer uses for solving it.
