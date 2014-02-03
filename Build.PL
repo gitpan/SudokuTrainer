@@ -11,7 +11,7 @@ my $distrib = 'Games::Sudoku::Trainer';   # Position of the Distribution
 my %args = (
     dist_name           => "$distro",
 #?    dist_version        => '0.000.005',
-    dist_version        => '0.00_07',
+    dist_version        => '0.00_08',
 	# Ohne Par. module_name kommt bei den Kommandos "perl Build.PL", 
 	# "Build disttest" und "Build dist" die (sachlich falsche) Meldung
 	# "No 'module_name' # was provided ...". Auﬂerdem ist nach der Inst.

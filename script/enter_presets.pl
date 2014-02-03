@@ -6,7 +6,7 @@ use warnings;
 use Tk;
 use Tk::Balloon;
 
-use version; our $VERSION = qv('0.0.3');    # PBP
+use version; our $VERSION = qv('0.0.5');    # PBP
 
 # Usage:
 # perl enter_presets.pl
@@ -322,6 +322,16 @@ This documentation refers to B<enter_presets> version 0.0.1
 This program is called internally by 
 L<SudokuTrainer|Games::Sudoku::Trainer::pod::sudokutrainer.pod> when 
 the user selects the option I<Enter manually> to create the initial puzzle.
+
+L<Games::Sudoku::Trainer::pod::sudokutrainer.pod>
+
+L<Games::Sudoku::Trainer::pod/sudokutrainer.pod>
+
+L<Games/Sudoku/Trainer/pod/sudokutrainer.pod>
+
+L<sudokutrainer.pl>
+
+L<sudokutrainer>
 
 =head1 DESCRIPTION 
 
