@@ -15,7 +15,7 @@ our @rows;     # row objects		(1 .. 9)
 package
     Games::Sudoku::Trainer::GUI;
 
-use version; our $VERSION = qv('0.0.5');    # PBP
+use version; our $VERSION = qv('0.01');    # PBP
 
 use Tk;
 use Tk::ErrorDialog;

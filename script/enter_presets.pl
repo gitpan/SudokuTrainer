@@ -6,7 +6,7 @@ use warnings;
 use Tk;
 use Tk::Balloon;
 
-use version; our $VERSION = qv('0.0.5');    # PBP
+use version; our $VERSION = qv('0.01');    # PBP
 
 # Usage:
 # perl enter_presets.pl
@@ -315,7 +315,7 @@ B<enter_presets> - enter the initial values of a Sudoku puzzle.
 
 =head1 VERSION 
 
-This documentation refers to B<enter_presets> version 0.0.1
+This documentation refers to B<enter_presets> version 0.01
 
 =head1 USAGE 
 
@@ -323,15 +323,8 @@ This program is called internally by
 L<SudokuTrainer|Games::Sudoku::Trainer::pod::sudokutrainer.pod> when 
 the user selects the option I<Enter manually> to create the initial puzzle.
 
+=for ignore
 L<Games::Sudoku::Trainer::pod::sudokutrainer.pod>
-
-L<Games::Sudoku::Trainer::pod/sudokutrainer.pod>
-
-L<Games/Sudoku/Trainer/pod/sudokutrainer.pod>
-
-L<sudokutrainer.pl>
-
-L<sudokutrainer>
 
 =head1 DESCRIPTION 
 

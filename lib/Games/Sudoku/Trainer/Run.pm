@@ -10,7 +10,7 @@ our @units;    # all unit objects	(0 .. 26)  rows, colums, and blocks
 
 package Games::Sudoku::Trainer::Run;
 
-use version; our $VERSION = qv('0.0.2');    # PBP
+use version; our $VERSION = qv('0.01');    # PBP
 
 use Getopt::Long;
 use Carp;

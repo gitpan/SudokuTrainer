@@ -13,7 +13,7 @@ our @blocks;    # block objects		(1 .. 9)
 package
     Games::Sudoku::Trainer::Unit;
 
-use version; our $VERSION = qv('0.0.5');    # PBP
+use version; our $VERSION = qv('0.01');    # PBP
 
 sub new {                                   # constructor for unit objects
     my $class = shift;

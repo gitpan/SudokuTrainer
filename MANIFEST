@@ -39,5 +39,8 @@ script/sudokutrainer.pl
 t/02_dir_examples_exists.t
 t/04_INSTALL_exists.t
 t/examples.t
+xt/03_no_use_feature.t
+xt/all_strats_code.t
+Makefile.PL
 META.yml
 META.json

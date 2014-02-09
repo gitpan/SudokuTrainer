@@ -8,7 +8,7 @@ use warnings;
 package
     Games::Sudoku::Trainer::GUIprio;
 
-use version; our $VERSION = qv('0.0.4');    # PBP
+use version; our $VERSION = qv('0.01');    # PBP
 
 my $mw;    # main window
 

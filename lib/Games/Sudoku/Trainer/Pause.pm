@@ -9,7 +9,7 @@ use warnings;
 package
     Games::Sudoku::Trainer::Pause;
 
-use version; our $VERSION = qv('0.0.2');    # PBP
+use version; our $VERSION = qv('0.01');    # PBP
 
 my $Mode             = '';                  # current pause mode
 my $Mode_restriction = '';                  # restriction of current pause mode

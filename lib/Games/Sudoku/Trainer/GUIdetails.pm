@@ -9,7 +9,7 @@ use warnings;
 package
     Games::Sudoku::Trainer::GUIdetails;
 
-use version; our $VERSION = qv('0.0.4');    # PBP
+use version; our $VERSION = qv('0.01');    # PBP
 
 # Private class for module Games::Sudoku::Trainer::GUIdetails.
 # Each Clues object holds the info for 1 row in the strategy details dialog,

@@ -10,7 +10,7 @@ our @cells;    # cell objects		(1 .. 81)
 package
     Games::Sudoku::Trainer::Check_pause;
 
-use version; our $VERSION = qv('0.0.2');    # PBP
+use version; our $VERSION = qv('0.01');    # PBP
 
 # This package checks whether a pause is requested at the current state
 # of the puzzle.

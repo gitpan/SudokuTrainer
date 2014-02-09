@@ -13,7 +13,7 @@ our @blocks;    # block objects     (1 .. 9)
 package
     Games::Sudoku::Trainer::Const_structs;
 
-use version; our $VERSION = qv('0.0.4');    # PBP
+use version; our $VERSION = qv('0.01');    # PBP
 
 # globals of package Const_structs
 # intersection of units

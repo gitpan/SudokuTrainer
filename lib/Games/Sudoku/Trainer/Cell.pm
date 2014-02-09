@@ -11,7 +11,7 @@ our @rows;     # row objects		(1 .. 9)
 package
     Games::Sudoku::Trainer::Cell;
 
-use version; our $VERSION = qv('0.0.3');    # PBP
+use version; our $VERSION = qv('0.01');    # PBP
 
 # constructor for cell objects
 #

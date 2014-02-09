@@ -39,14 +39,14 @@
       },
       "Games::Sudoku::Trainer::Run" : {
          "file" : "lib/Games/Sudoku/Trainer/Run.pm",
-         "version" : "v0.0.2"
+         "version" : "v0.1.0"
       }
    },
-   "release_status" : "testing",
+   "release_status" : "stable",
    "resources" : {
       "license" : [
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.00_08"
+   "version" : "0.01"
 }

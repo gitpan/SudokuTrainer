@@ -5,7 +5,7 @@ use warnings;
 package
     Games::Sudoku::Trainer::Found_info;
 
-use version; our $VERSION = qv('0.0.2');    # PBP
+use version; our $VERSION = qv('0.01');    # PBP
 
 my @pending;    # all Found_info objects waiting for processing
 

@@ -15,7 +15,7 @@ our @lines;     # all line objects	(0 .. 17)  rows and colums
 package
     Games::Sudoku::Trainer::Strategies;
 
-use version; our $VERSION = qv('0.0.4');    # PBP
+use version; our $VERSION = qv('0.01');    # PBP
 
 use List::MoreUtils;
 

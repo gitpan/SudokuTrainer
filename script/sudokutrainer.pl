@@ -15,7 +15,7 @@ our @lines;     # all line objects	(0 .. 17)  rows and colums
 
 package main;
 
-use version; our $VERSION = qv('0.0.5');    # PBP
+use version; our $VERSION = qv('0.01');    # PBP
 
 BEGIN {
     use Games::Sudoku::Trainer::Cell;
@@ -53,7 +53,7 @@ It may also be used to get over an obstacle in a partially solved Sudoku puzzle.
 =head1 VERSION
 
 
-This documentation refers to SudokuTrainer version 0.0.1.
+This documentation refers to SudokuTrainer version 0.01.
 
 =head1 PURPOSE
 

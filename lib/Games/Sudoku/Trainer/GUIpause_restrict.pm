@@ -11,7 +11,7 @@ our @rows;     # row objects		(1 .. 9)
 package
     Games::Sudoku::Trainer::GUIpause_restrict;
 
-use version; our $VERSION = qv('0.0.3');    # PBP
+use version; our $VERSION = qv('0.01');    # PBP
 
 use Tk;
 

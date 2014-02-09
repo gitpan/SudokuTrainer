@@ -10,16 +10,6 @@ by the use of Sudoku solution strategies. If this isn't what you expected,
 please inspect section
 L<Games::Sudoku::Trainer::pod::sudokutrainer.pod/GUIDE_TO_DOCUMENTATION>.
 
-L<Games::Sudoku::Trainer::pod::sudokutrainer.pod>
-
-L<Games::Sudoku::Trainer::pod/sudokutrainer.pod>
-
-L<Games/Sudoku/Trainer/pod/sudokutrainer.pod>
-
-L<sudokutrainer.pl>
-
-L<sudokutrainer>
-
 =head1 DESCRIPTION
 
 You are stuck in the middle of solving a Sudoku puzzle, and you don't know 
@@ -146,12 +136,6 @@ as is explained
 in section L<Games::Sudoku::Trainer::pod::training.pod/Train the strategy>.
 Then click again the I<Run> button and try on 
 the next strategy, and repeat this until the next value is found. 
-
-L<Games::Sudoku::Trainer::pod::training.pod>.
-
-L<Games::Sudoku::Trainer::pod/training.pod>.
-
-L<Games/Sudoku/Trainer/pod/training.pod>.
 
 Repeat this whole step 
 several times, trying to succeed with less help, until you are confident 

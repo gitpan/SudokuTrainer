@@ -4,7 +4,7 @@ use warnings;
 package
     Games::Sudoku::Trainer::Priorities;
 
-use version; our $VERSION = qv('0.0.2');    # PBP
+use version; our $VERSION = qv('0.01');    # PBP
 
 # globals
 my @strategies;    # strategies arranged by current priorities

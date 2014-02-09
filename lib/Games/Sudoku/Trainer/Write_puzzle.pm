@@ -13,7 +13,7 @@ our @cells;    # cell objects		(1 .. 81)
 package
     Games::Sudoku::Trainer::Write_puzzle;
 
-use version; our $VERSION = qv('0.0.3');    # PBP
+use version; our $VERSION = qv('0.01');    # PBP
 
 # write the current state of the sudoku puzzle
 #	write_result($outfile);
