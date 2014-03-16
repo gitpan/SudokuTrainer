@@ -15,7 +15,7 @@ our @lines;     # all line objects	(0 .. 17)  rows and colums
 
 package main;
 
-use version; our $VERSION = qv('0.01');    # PBP
+use version; our $VERSION = qv('0.01.1');    # PBP
 
 BEGIN {
     use Games::Sudoku::Trainer::Cell;
@@ -47,13 +47,12 @@ __END__
 
 SudokuTrainer
 
-This program helps to train the detection of successful Sudoku solution stategies.
+This program helps to train the detection of successful Sudoku solution strategies.
 It may also be used to get over an obstacle in a partially solved Sudoku puzzle.
 
 =head1 VERSION
 
-
-This documentation refers to SudokuTrainer version 0.01.
+This documentation refers to SudokuTrainer version 0.01.1.
 
 =head1 PURPOSE
 
@@ -93,7 +92,7 @@ A doubleclick on a choice will select it and
 close the selection window. When you select the choice 
 I<Insert manually> the utility program
 B<enter_presets.pl> gets started. See the documentation of 
-it at L<Games::Sudoku::Trainer::pod::enter_presets.pod>. 
+it (use "perldoc enter_presets.pl"). 
 After you entered the initial puzzle manually, 
 you should better save it. Chances are good that 
 you will need it several times. Corrections to 
@@ -150,7 +149,7 @@ to use it as the value of the cell.
 For more difficult Sudoku puzzles it may be helpful to inspect a list of
 all still possible (or already excluded) candidates. You may 
 view the internal candidate list of SudokuTrainer for this purpose 
-(see section L<Games::Sudoku::Trainer::pod::training.pod/View>).
+(see section L<Games::Sudoku::Trainer::Training/View>).
 
 =item * strategy
 
@@ -170,7 +169,7 @@ usually assigned a high priority.
 A B<priority list> is a list of all strategies (exept 
 I<Full house>), ordered by their priorities. The user may 
 rearrange the strategies, thus changing their priorities 
-(see section L<Games::Sudoku::Trainer::pod::training.pod/Priorities>). 
+(see section L<Games::Sudoku::Trainer::Training/Priorities>). 
 He may also save the priority list for later reuse.
 
 =back
@@ -211,7 +210,7 @@ communication with SudokuTrainer.
 
 =head2 Train a strategy
 
-The document L<Games::Sudoku::Trainer::pod::training.pod> describes the 
+The document L<Games::Sudoku::Trainer::Training> describes the 
 operation of SudokuTrainer from a user point of view.
 
 SudokuTrainer has a list of all strategies that it knows 
@@ -224,14 +223,14 @@ It's time to train.
 
 =head2 Overcome an obstacle
 
-The document L<Games::Sudoku::Trainer::pod::obstacle.pod> 
+The document L<Games::Sudoku::Trainer::Obstacle> 
 describes how the user 
 lets SudokuTrainer find the next value step by step. He can 
 comprehend each step with minimum help by SudokuTrainer.
 
 =head2 Get a further value
 
-The document L<Games::Sudoku::Trainer::pod::nextvalue.pod> 
+The document L<Games::Sudoku::Trainer::Nextvalue> 
 describes how the user 
 lets SudokuTrainer find value by value, until the find 
 hasn't been found by the user before.
@@ -315,20 +314,9 @@ needs the following modules (available from CPAN):
 
 =head1 BUGS
 
-Please report any bugs or feature requests to Wittrock@cpan.org, 
+Please report any bugs or feature requests to bug-SudokuTrainer [at] rt.cpan.org, 
 or through the web interface at 
-http://rt.cpan.org.
-
-=for ignore
-bug-Games-Sudoku-Trainer [at] rt.cpan.org
-bug-Module-Build [at] rt.cpan.org
-bug-Test-Harness [at] rt.cpan.org
-bug-libwww-perl [at] rt.cpan.org
-or through the web interface at 
-https://rt.cpan.org/Ticket/Create.html?Queue=Games-Sudoku-Trainer-SudokuTrainer.
-http://rt.cpan.org/NoAuth/Bugs.html?Dist=File-Path
-http://rt.cpan.org/NoAuth/ReportBug.html?Queue=List-MoreUtils
-http://rt.cpan.org/NoAuth/Bugs.html?Dist=Module-Build
+https://rt.cpan.org/Public/Bug/Report.html?Queue=SudokuTrainer.
 
 Please include the following material in the bug report:
 
@@ -355,7 +343,7 @@ for code errors)
 
 =head1 AUTHOR
 
-Klaus Wittrock  (Wittrock@cpan.org)
+Klaus Wittrock  (Wittrock [at] cpan.org)
 
 =head1 ACKNOWLEDGEMENT
 

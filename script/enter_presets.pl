@@ -6,7 +6,7 @@ use warnings;
 use Tk;
 use Tk::Balloon;
 
-use version; our $VERSION = qv('0.01');    # PBP
+use version; our $VERSION = qv('0.01.1');    # PBP
 
 # Usage:
 # perl enter_presets.pl
@@ -315,16 +315,13 @@ B<enter_presets> - enter the initial values of a Sudoku puzzle.
 
 =head1 VERSION 
 
-This documentation refers to B<enter_presets> version 0.01
+This documentation refers to B<enter_presets> version 0.01.1
 
 =head1 USAGE 
 
 This program is called internally by 
-L<SudokuTrainer|Games::Sudoku::Trainer::pod::sudokutrainer.pod> when 
+B<SudokuTrainer> when
 the user selects the option I<Enter manually> to create the initial puzzle.
-
-=for ignore
-L<Games::Sudoku::Trainer::pod::sudokutrainer.pod>
 
 =head1 DESCRIPTION 
 
@@ -378,7 +375,7 @@ of the trainer.
 
 =head1 SEE ALSO 
 
-The dokumentation for L<SudokuTrainer|Games::Sudoku::Trainer::pod::sudokutrainer.pod>.
+The dokumentation for B<SudokuTrainer> (use "perldoc sudokutrainer.pl").
 
 =head1 DEPENDENCIES 
 
@@ -390,17 +387,15 @@ The dokumentation for L<SudokuTrainer|Games::Sudoku::Trainer::pod::sudokutrainer
 
 =head1 BUGS
 
-Please report any bugs or feature requests to Wittrock@cpan.org, 
-
-=for ignore
+Please report any bugs or feature requests to bug-SudokuTrainer [at] rt.cpan.org, 
 or through the web interface at 
-https://rt.cpan.org/Ticket/Create.html?Queue=Games-Sudoku-Trainer.
+https://rt.cpan.org/Public/Bug/Report.html?Queue=SudokuTrainer.
 
 Patches are welcome.
 
 =head1 AUTHOR
 
-Klaus Wittrock  (Wittrock@cpan.org)
+Klaus Wittrock  (Wittrock [at] cpan.org)
 
 =head1 LICENCE AND COPYRIGHT
 

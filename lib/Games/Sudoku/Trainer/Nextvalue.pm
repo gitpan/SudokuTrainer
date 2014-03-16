@@ -1,9 +1,29 @@
+package Games::Sudoku::Trainer::Nextvalue;
+ 
+use strict;
+use warnings;
+ 
+use version; our $VERSION = qv('0.01');    # PBP
+
+1;
+
+__END__
+ 
+=head1 NAME
+
+Games::Sudoku::Trainer::Nextvalue - get some new value while solving a Sudoku puzzle
+ 
 =head1 PURPOSE
 
 This part of the documentation for SudokuTrainer aims at people that 
 just want some new value to get over an obstacle while solving a Sudoku 
 puzzle. If this isn't what you expected, please inspect section
+L<sudokutrainer.pl/GUIDE_TO_DOCUMENTATION>.
 L<Games::Sudoku::Trainer::pod::sudokutrainer.pod/GUIDE_TO_DOCUMENTATION>.
+
+=head1 USAGE 
+
+    perldoc Games::Sudoku::Trainer::Nextvalue
 
 =head1 INTRODUCTION
 
@@ -18,12 +38,13 @@ digit to a cell. Here this program SudokuTrainer can often help you.
 When starting SudokuTrainer you have to enter the Sudoku puzzle for 
 which you need help. Therefore you select the option C<Insert manually>. 
 If you cannot find out how the input works, you may read the 
-documentation at L<Games::Sudoku::Trainer::pod::enter_presets.pod>. When finished 
+documentation at L<enter_presets.pl>. When finished 
 with the input you click the Button 
 I<Done> and thus reach the main window of SudokuTrainer. There you 
 should save the entered puzzle first, just in case you need it again later. 
 For this you use the menu C<< File -> Save initial puzzle >>. You may catch 
 up this step at any time lateron.
+documentation at L<Games::Sudoku::Trainer::pod::enter_presets.pod>. When finished 
 
 =for ignore
 documentation L<here|Games::Sudoku::Trainer::pod::enter_presets.pod>. When finished 

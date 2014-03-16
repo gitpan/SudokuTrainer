@@ -1,6 +1,17 @@
+package Games::Sudoku::Trainer::Obstacle;
+ 
+use strict;
+use warnings;
+ 
+use version; our $VERSION = qv('0.01');    # PBP
+
+1;
+
+__END__
+ 
 =head1 NAME
 
-B<obstacle.pod>
+Games::Sudoku::Trainer::Obstacle - get over an obstacle while solving a Sudoku puzzle
 
 =head1 PURPOSE
 
@@ -8,7 +19,12 @@ This part of the documentation for SudokuTrainer aims at people that want
 to use SudokuTrainer to get over an obstacle while solving a Sudoku puzzle 
 by the use of Sudoku solution strategies. If this isn't what you expected, 
 please inspect section
+L<sudokutrainer.pl/GUIDE_TO_DOCUMENTATION>.
 L<Games::Sudoku::Trainer::pod::sudokutrainer.pod/GUIDE_TO_DOCUMENTATION>.
+
+=head1 USAGE 
+
+    perldoc Games::Sudoku::Trainer::Obstacle
 
 =head1 DESCRIPTION
 
@@ -133,7 +149,7 @@ pause at the key point. Now select I<Pause mode | single step> and click the
 I<Run> button. The trainer pauses at the next
 successful strategy. Try to find it with minimum help by the I<Details> button, 
 as is explained 
-in section L<Games::Sudoku::Trainer::pod::training.pod/Train the strategy>.
+in section L<Games::Sudoku::Trainer::Training/Train the strategy>.
 Then click again the I<Run> button and try on 
 the next strategy, and repeat this until the next value is found. 
 

@@ -6,12 +6,7 @@ Description
     Get the next strategy for continuation
     Get the next value for continuation
 Supported sudoku strategies
-Installation prologue
 Installation
-    1. CPAN
-	2. CPANP
-	3. Module::Build
-	4. ExtUtils-MakeMaker
 Starting SudokuTrainer
 Display the documentation
 Restrictions
@@ -19,7 +14,7 @@ Restrictions
 
 PURPOSE
 -------
-This document informs about SudokuTrainer version 0.000.001
+This document informs about SudokuTrainer version 0.01.
 
 
 DESCRIPTION
@@ -65,7 +60,7 @@ SUPPORTED SUDOKU STRATEGIES
 This version of SudokuTrainer supports the following strategies:
     Bivalue Universal Grave
     Block-Line Interaction
-	Full House
+    Full House
     Hidden Pair
     Hidden Single
     Line-Block Interaction
@@ -94,15 +89,13 @@ On Windows: sudokutrainer      (in any directory)
 
 DISPLAY THE DOCUMENTATION
 -------------------------
-SudokuTrainer aims at 3 groups of users (cf. section DESCRIPTION).
-So the docu is devided into several sections. The POD files of
-the docu resides in path Games::Sudoku::Trainer::pod. So they can
-be read by
-    perldoc Games::Sudoku::Trainer::pod::sudokutrainer.pod   (General info)
-    perldoc Games::Sudoku::Trainer::pod::enter_presets.pod   (Enter preset values)
-    perldoc Games::Sudoku::Trainer::pod::training.pod        (Train a strategy)
-    perldoc Games::Sudoku::Trainer::pod::obstacle.pod        (Get next strategy)
-    perldoc Games::Sudoku::Trainer::pod::nextvalue.pod       (Get next value)
+SudokuTrainer aims at 3 groups of users (cf. section DESCRIPTION above).
+So the docu is devided into several sections. They can be read by
+    perldoc sudokutrainer.pl                    (General info)
+    perldoc enter_presets.pl                    (Enter preset values)
+    perldoc Games::Sudoku::Trainer::Training    (Train a strategy)
+    perldoc Games::Sudoku::Trainer::Obstacle    (Get next strategy)
+    perldoc Games::Sudoku::Trainer::Nextvalue   (Get next value)
 
 
 RESTRICTIONS

@@ -15,9 +15,10 @@ our @lines;     # all line objects	(0 .. 17)  rows and colums
 package
     Games::Sudoku::Trainer::Strategies;
 
-use version; our $VERSION = qv('0.01');    # PBP
+use version; our $VERSION = qv('0.02');    # PBP
 
-use List::MoreUtils;
+use List::Util;        # for first
+use List::MoreUtils;   # for uniq and firstidx
 
 # This is the priority loop. All supported strategies (exept Full house)
 # are tried in turn in the sequence of their priorities, until one
@@ -42,7 +43,13 @@ use List::MoreUtils;
 #          for action 'exclude': each element has the structure
 #          $cell->Cell_num . '-' . "cand digit"
 #
+
 sub try_strategies {
+	# protect against problems
+	# on an excessive strategy scan after solving a puzzle
+	use List::Util qw(first);
+	my @candcells = grep {! $_->Value} @cells[1 .. 81];
+
     foreach
       my $strat_func ( @{ Games::Sudoku::Trainer::Priorities::strat_funcs_ref() } )
     {
@@ -57,10 +64,16 @@ sub try_strategies {
 }
 
 sub _bivalue_universal_grave {
+	my @candcells = grep {! $_->Value} @cells[1 .. 81];
+	# protect against the confusing "not unique" message
+	# on an excessive strategy scan after solving a puzzle
+	return unless @candcells;
+
     my $cand3cell;
-    foreach my $cell (@cells) {
+#   foreach my $cell (@cells) {
+    foreach my $cell (@candcells) {
         next unless $cell;    # skip index 0
-        next if $cell->Value;
+#       next if $cell->Value;
         my $cell_cands = $cell->Candidates;
         my $candcount  = length($cell_cands);
         return if $candcount > 3;
@@ -69,6 +82,7 @@ sub _bivalue_universal_grave {
             $cand3cell = $cell;
         }
     }
+
     $cand3cell or die "1\nThis sudoku puzzle is not unique\n";
     my $cell_cands = $cand3cell->Candidates;
     my @cand3 = split( '', $cell_cands );

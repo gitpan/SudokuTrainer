@@ -23,13 +23,13 @@ lib/Games/Sudoku/Trainer/GUIdetails.pm
 lib/Games/Sudoku/Trainer/GUIhist.pm
 lib/Games/Sudoku/Trainer/GUIpause_restrict.pm
 lib/Games/Sudoku/Trainer/GUIprio.pm
+lib/Games/Sudoku/Trainer/Nextvalue.pm
+lib/Games/Sudoku/Trainer/Obstacle.pm
 lib/Games/Sudoku/Trainer/Pause.pm
-lib/Games/Sudoku/Trainer/pod/nextvalue.pod
-lib/Games/Sudoku/Trainer/pod/obstacle.pod
-lib/Games/Sudoku/Trainer/pod/training.pod
 lib/Games/Sudoku/Trainer/Priorities.pm
 lib/Games/Sudoku/Trainer/Run.pm
 lib/Games/Sudoku/Trainer/Strategies.pm
+lib/Games/Sudoku/Trainer/Training.pm
 lib/Games/Sudoku/Trainer/Unit.pm
 lib/Games/Sudoku/Trainer/Write_puzzle.pm
 MANIFEST			This list of files
@@ -39,8 +39,6 @@ script/sudokutrainer.pl
 t/02_dir_examples_exists.t
 t/04_INSTALL_exists.t
 t/examples.t
-xt/03_no_use_feature.t
-xt/all_strats_code.t
 Makefile.PL
 META.yml
 META.json

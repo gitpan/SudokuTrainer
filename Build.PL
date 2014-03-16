@@ -5,12 +5,12 @@ use warnings;
 use Module::Build;
 
 my $distro = 'SudokuTrainer';   # Name of the Distribution (without version suffix)
-my $distrib = 'Games::Sudoku::Trainer';   # Position of the Distribution
-(my $distdir = $distrib) =~ s#::#/#g;   # Dir. of the Distribution
+my $distrib = 'Games::Sudoku::Trainer';   # Namespace of the Distribution
+(my $distdir = $distrib) =~ s#::#/#g;     # Dir. of the Distribution
 
 my %args = (
     dist_name           => "$distro",
-    dist_version        => '0.01',
+    dist_version        => '0.01.1',
 	# Ohne Par. module_name kommt bei den Kommandos "perl Build.PL", 
 	# "Build disttest" und "Build dist" die (sachlich falsche) Meldung
 	# "No 'module_name' # was provided ...". Außerdem ist nach der Inst.
@@ -28,13 +28,23 @@ my %args = (
 	release_status      => 'stable',
 	script_files        => 'script',
 
-	pod_files           => {
-	    "script/sudokutrainer.pl" => "lib/$distdir/pod/sudokutrainer.pod",
-	    "script/enter_presets.pl" => "lib/$distdir/pod/enter_presets.pod",
-	    "lib/$distdir/pod/nextvalue.pod" => "lib/$distdir/pod/nextvalue.pod",
-	    "lib/$distdir/pod/obstacle.pod" => "lib/$distdir/pod/obstacle.pod",
-	    "lib/$distdir/pod/training.pod" => "lib/$distdir/pod/training.pod",
+#	pod_files           => {
+#	    "script/sudokutrainer.pl" => "lib/$distdir/pod/sudokutrainer.pod",
+#	    "script/enter_presets.pl" => "lib/$distdir/pod/enter_presets.pod",
+#	    "lib/$distdir/pod/nextvalue.pod" => "lib/$distdir/pod/nextvalue.pod",
+#	    "lib/$distdir/pod/obstacle.pod" => "lib/$distdir/pod/obstacle.pod",
+#	    "lib/$distdir/pod/training.pod" => "lib/$distdir/pod/training.pod",
+#    },
+
+	meta_merge          => {
+		no_index => {
+		  file      => [ 'Games/Sudoku/Trainer/Run.pm' ],
+#		  directory => [ 'My/Private' ],
+#		  package   => [ 'My::Module::Secret' ],
+#		  namespace => [ 'My::Module::Sample' ],
+		},
     },
+
     requires            => {
 # wait  'perl' => 5.008001,
         'perl' => 0,

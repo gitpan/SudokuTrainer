@@ -1,11 +1,11 @@
 use strict;
 use warnings;
-#use feature qw( say );
+use feature qw( say );
 
 package
     Games::Sudoku::Trainer::Found_info;
 
-use version; our $VERSION = qv('0.01');    # PBP
+use version; our $VERSION = qv('0.02');    # PBP
 
 my @pending;    # all Found_info objects waiting for processing
 
@@ -25,17 +25,19 @@ sub new {
     #    my $self = \%props;
     my $self = $found_ref;
     bless $self, $class;
+
     push @pending, $self;
     return;
 }
 
 # getter for Found_info objects
-#   return all pending Found_info objects for processing
+#   return the oldest pending Found_info object for processing
 #
-sub getall {
-    my @process = @pending;
-    @pending = ();
-    return @process;
+sub oldest {
+
+    return shift @pending;
+##	my $found_ref = shift @pending;
+##	return $found_ref;
 }
 
 1;

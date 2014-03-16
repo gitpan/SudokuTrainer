@@ -1,3 +1,14 @@
+CONTENTS
+--------
+Installation prologue
+Installation
+    1. CPAN
+    2. CPANP
+    3. Module::Build
+    4. ExtUtils-MakeMaker
+Acknowledgement
+
+
 INSTALLATION PROLOGUE
 ---------------------
 This section is relevant only for users that work on Windows with the
@@ -41,15 +52,16 @@ Use the shell command "cpanp -i Games::Sudoku::Trainer".
 -----------------
 For the following installation procedures you need a preliminary step:
 Visit the website
-http://search.cpan.org/~wittrock/SudokuTrainer-0.000.005-TRIAL/script/sudokutrainer.pl
-and download the distribution file, then unpack it:
+http://search.cpan.org/search?query=sudokutrainer&mode=all
+and click on the search result "SudokuTrainer",
+and from there download the distribution file, then unpack it:
 
 On Linux:   tar -xzf SudokuTrainer-0.000.005-TRIAL.tar.gz
 On Windows: Use a ZIP archiver program (e. g. winZIP or 7-Zip) to unpack the
             distribution file.
 			
 Finally enter the distribution directory:
-cd SudokuTrainer-0.000.005-TRIAL
+cd SudokuTrainer-<version>.
 
 3. Module::Build
 ----------------

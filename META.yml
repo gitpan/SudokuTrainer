@@ -12,6 +12,9 @@ meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: SudokuTrainer
+no_index:
+  file:
+    - Games/Sudoku/Trainer/Run.pm
 provides:
   Games::Sudoku::Trainer::GUI:
     file: lib/Games/Sudoku/Trainer/GUIdetails.pm
@@ -19,8 +22,17 @@ provides:
   Games::Sudoku::Trainer::GUIdetails:
     file: lib/Games/Sudoku/Trainer/GUIdetails.pm
     version: 0
+  Games::Sudoku::Trainer::Nextvalue:
+    file: lib/Games/Sudoku/Trainer/Nextvalue.pm
+    version: v0.1.0
+  Games::Sudoku::Trainer::Obstacle:
+    file: lib/Games/Sudoku/Trainer/Obstacle.pm
+    version: v0.1.0
   Games::Sudoku::Trainer::Run:
     file: lib/Games/Sudoku/Trainer/Run.pm
+    version: v0.2.0
+  Games::Sudoku::Trainer::Training:
+    file: lib/Games/Sudoku/Trainer/Training.pm
     version: v0.1.0
 requires:
   Encode: 0
@@ -29,4 +41,4 @@ requires:
   perl: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.01
+version: v0.01.1

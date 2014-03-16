@@ -10,7 +10,7 @@ our @units;    # all unit objects	(0 .. 26)  rows, colums, and blocks
 
 package Games::Sudoku::Trainer::Run;
 
-use version; our $VERSION = qv('0.01');    # PBP
+use version; our $VERSION = qv('0.02');    # PBP
 
 use Getopt::Long;
 use Carp;
@@ -156,7 +156,8 @@ sub _init_puzzle {
         # So the user has the chance to select a different puzzle.
         #
         $gamestring =~ s/\n//g;    # ignore newlines
-                                   # ignore whitespace
+
+        # ignore whitespace
         if ( length($gamestring) > 81 ) { $gamestring =~ s/\s//g }
         my $l = length($gamestring);
         if ( $l == 0 ) {
@@ -198,14 +199,14 @@ sub _init_puzzle {
 sub _insert_presets {
     my ( $cell, $digit, $strategy );
     my $found_info_ref;
-    my @found;
 
     # Inform class Cell that we are inserting preset values
     # This delays some error messages until verify
     Games::Sudoku::Trainer::Pause->setMode('in_preset');
-    @found = Games::Sudoku::Trainer::Found_info->getall();
-    while (@found) {
-        $found_info_ref = shift(@found);
+    while (1) {
+    	my $oldest = Games::Sudoku::Trainer::Found_info->oldest();
+		last unless $oldest;
+        $found_info_ref = $oldest;
         ( $cell, $digit, $strategy ) = @$found_info_ref;
         $cell->insert_digit($digit);
         Games::Sudoku::Trainer::GUI::display_cellvalue(
@@ -274,7 +275,7 @@ sub _verify_puzzle {
     return;
 } ## end sub _verify_puzzle
 
-# the main loop of the Sudoku trainer
+# the main loop of SudokuTrainer
 #
 sub _run_puzzle {
 
@@ -287,17 +288,17 @@ sub _run_puzzle {
     #   start the strategies loop to find more values or exclusions
     # When there is no new find, terminate the main loop
     #
-    my @found;
     my $found_info_ref;
     my ( $cell, $digit, $strategy );
 
-    unless (@found) {
-        Games::Sudoku::Trainer::Strategies::try_strategies();
-        @found = Games::Sudoku::Trainer::Found_info->getall();
-    }
-    while (@found) {
-        $found_info_ref = shift(@found);
-        $strategy       = $found_info_ref->[0];
+    while (1) {
+        $found_info_ref = Games::Sudoku::Trainer::Found_info->oldest();
+        unless ($found_info_ref) {
+            Games::Sudoku::Trainer::Strategies::try_strategies();
+		    $found_info_ref = Games::Sudoku::Trainer::Found_info->oldest();
+            last unless $found_info_ref;
+        }
+        $strategy = $found_info_ref->[0];
         if ( $found_info_ref->[1] eq 'insert' ) {
             ( $digit, $cell ) = @{ $found_info_ref->[3] };
             next if ( $cell->Value );    # already found
@@ -308,35 +309,22 @@ sub _run_puzzle {
             );
             $cell->insert_digit($digit);
             Games::Sudoku::Trainer::Strategies::full_house($cell);
+			# end main loop of SudokuTrainer if all values found
+##			last unless first { $_->Value == 0 } @cells[ 1 .. 81 ];
 
-        }
-        else {                           # exclude cand.s
+        } else {                           # exclude cand.s
 
             Games::Sudoku::Trainer::Check_pause::check_pause($found_info_ref);
             my @exclude_info = @{ $found_info_ref->[3] };
-            my $inform       = '';
             foreach my $info (@exclude_info) {
                 my ( $cell_num, $exclude_cands ) = split( '-', $info );
                 $cell = $cells[$cell_num];
-                $inform .= "$exclude_cands from " . $cell->Name . ', ';
                 foreach my $digit ( split( '', $exclude_cands ) ) {
                     $cell->exclude_candidate($digit);
                 }
             }
         }
         Games::Sudoku::Trainer::GUIhist::add_history($found_info_ref);
-    }
-    continue {
-        unless (@found) {
-
-            # last try if not all values found
-            my $not_done = first { $_->Value == 0 } @cells[ 1 .. 81 ];
-            if ($not_done) {
-                Games::Sudoku::Trainer::Strategies::try_strategies();
-                @found = Games::Sudoku::Trainer::Found_info->getall();
-                last if not @found;
-            }
-        }
     }
 
     if ( ( my $valuecount = grep { $_->Value } @cells[ 1 .. 81 ] ) == 81 ) {
