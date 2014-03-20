@@ -1,11 +1,17 @@
 use strict;
 use warnings;
-use feature qw( say );
+#use feature qw( say );
 
-package
-    Games::Sudoku::Trainer::Found_info;
+package Games::Sudoku::Trainer::Found_info;
 
-use version; our $VERSION = qv('0.02');    # PBP
+use version; our $VERSION = qv('0.03');    # PBP
+
+# This package manages a FIFO buffer for scalars. Incoming scalars
+# are added to the buffer, the oldest scalar is returned on request.
+# If the buffer is empty, "undef" is returned. So "undef" shouldn't
+# be presented for addition (this is currently not checked).
+# In spite of its name, Found_info doesn't know anything about the
+# managed scalars.
 
 my @pending;    # all Found_info objects waiting for processing
 
@@ -36,8 +42,6 @@ sub new {
 sub oldest {
 
     return shift @pending;
-##	my $found_ref = shift @pending;
-##	return $found_ref;
 }
 
 1;

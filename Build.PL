@@ -10,7 +10,7 @@ my $distrib = 'Games::Sudoku::Trainer';   # Namespace of the Distribution
 
 my %args = (
     dist_name           => "$distro",
-    dist_version        => '0.01.1',
+    dist_version        => '0.01.2',
 	# Ohne Par. module_name kommt bei den Kommandos "perl Build.PL", 
 	# "Build disttest" und "Build dist" die (sachlich falsche) Meldung
 	# "No 'module_name' # was provided ...". Außerdem ist nach der Inst.
@@ -19,7 +19,7 @@ my %args = (
 	# leer.
 	# Das hat wohl nur Auswirkungen auf CPAN, das Modul kann bei lokaler
 	# Inst. normal benutzt werden.
-    module_name         => "Games::Sudoku::Trainer::GUI",
+    module_name         => "Games::Sudoku::Trainer::Run",
     license             => 'perl',
     dist_author         => q{Klaus Wittrock <Wittrock@cpan.org>},
 	dist_abstract       => 'Train on detecting successful Sudoku stategies.' . "\n"
@@ -28,17 +28,9 @@ my %args = (
 	release_status      => 'stable',
 	script_files        => 'script',
 
-#	pod_files           => {
-#	    "script/sudokutrainer.pl" => "lib/$distdir/pod/sudokutrainer.pod",
-#	    "script/enter_presets.pl" => "lib/$distdir/pod/enter_presets.pod",
-#	    "lib/$distdir/pod/nextvalue.pod" => "lib/$distdir/pod/nextvalue.pod",
-#	    "lib/$distdir/pod/obstacle.pod" => "lib/$distdir/pod/obstacle.pod",
-#	    "lib/$distdir/pod/training.pod" => "lib/$distdir/pod/training.pod",
-#    },
-
 	meta_merge          => {
 		no_index => {
-		  file      => [ 'Games/Sudoku/Trainer/Run.pm' ],
+		  file      => [ 'Games/Sudoku/Trainer/Found_info.pm' ],
 #		  directory => [ 'My/Private' ],
 #		  package   => [ 'My::Module::Secret' ],
 #		  namespace => [ 'My::Module::Sample' ],

@@ -4,12 +4,12 @@ WriteMakefile
 (
   'PL_FILES' => {},
   'INSTALLDIRS' => 'site',
-  'NAME' => 'Games::Sudoku::Trainer::GUI',
+  'NAME' => 'Games::Sudoku::Trainer::Run',
   'EXE_FILES' => [
                    'script\\enter_presets.pl',
                    'script\\sudokutrainer.pl'
                  ],
-  'VERSION_FROM' => 'lib/Games/Sudoku/Trainer/GUI.pm',
+  'VERSION_FROM' => 'lib/Games/Sudoku/Trainer/Run.pm',
   'PREREQ_PM' => {
                    'List::MoreUtils' => 0,
                    'Tk' => 0,

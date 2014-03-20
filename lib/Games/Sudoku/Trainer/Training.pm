@@ -1,14 +1,14 @@
 package Games::Sudoku::Trainer::Training;
- 
+
 use strict;
 use warnings;
- 
-use version; our $VERSION = qv('0.01');    # PBP
+
+use version; our $VERSION = qv('0.02');    # PBP
 
 1;
 
 __END__
- 
+
 =head1 NAME
 
 Games::Sudoku::Trainer::Training - train a certain Sudoku strategy
@@ -18,8 +18,8 @@ Games::Sudoku::Trainer::Training - train a certain Sudoku strategy
 This part of the documentation for B<SudokuTrainer> aims at people that want 
 to use SudokuTrainer to train a certain Sudoku strategy. If this isn't what 
 you expected, please inspect section 
-L<sudokutrainer.pl/GUIDE_TO_DOCUMENTATION>.
-L<Games::Sudoku::Trainer::pod::sudokutrainer.pod/GUIDE_TO_DOCUMENTATION>.
+"GUIDE TO DOCUMENTATION" in the dokumentation for B<SudokuTrainer> 
+(use "perldoc sudokutrainer.pl").
 
 =head1 USAGE 
 
@@ -90,11 +90,11 @@ stop>, press I<Run> and then inspect the list of I<History | Summary>.
 
 At the start of SudokuTrainer you are offered the choice 
 C<Read example file> (see section 
-L<sudokutrainer.pl/OPTIONS>). 
+"OPTIONS" in the dokumentation for B<SudokuTrainer> 
+(use "perldoc sudokutrainer.pl").
 Here you may select a puzzle from a collection of examples
 that are included in the distribution. These puzzles are named by the lowest 
 (probably most difficult) strategy that SudokuTrainer uses for solving it.
-L<Games::Sudoku::Trainer::pod::sudokutrainer.pod/OPTIONS>). 
 
 =head2 The priority loop
 

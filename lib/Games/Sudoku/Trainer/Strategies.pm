@@ -15,7 +15,7 @@ our @lines;     # all line objects	(0 .. 17)  rows and colums
 package
     Games::Sudoku::Trainer::Strategies;
 
-use version; our $VERSION = qv('0.02');    # PBP
+use version; our $VERSION = qv('0.03');    # PBP
 
 use List::Util;        # for first
 use List::MoreUtils;   # for uniq and firstidx
@@ -48,7 +48,8 @@ sub try_strategies {
 	# protect against problems
 	# on an excessive strategy scan after solving a puzzle
 	use List::Util qw(first);
-	my @candcells = grep {! $_->Value} @cells[1 .. 81];
+#	my @candcells = grep {! $_->Value} @cells[1 .. 81];
+	return unless grep {! $_->Value} @cells[1 .. 81];
 
     foreach
       my $strat_func ( @{ Games::Sudoku::Trainer::Priorities::strat_funcs_ref() } )
@@ -70,10 +71,8 @@ sub _bivalue_universal_grave {
 	return unless @candcells;
 
     my $cand3cell;
-#   foreach my $cell (@cells) {
     foreach my $cell (@candcells) {
         next unless $cell;    # skip index 0
-#       next if $cell->Value;
         my $cell_cands = $cell->Candidates;
         my $candcount  = length($cell_cands);
         return if $candcount > 3;

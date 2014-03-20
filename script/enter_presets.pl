@@ -6,7 +6,7 @@ use warnings;
 use Tk;
 use Tk::Balloon;
 
-use version; our $VERSION = qv('0.01.1');    # PBP
+use version; our $VERSION = qv('0.01.2');    # PBP
 
 # Usage:
 # perl enter_presets.pl
@@ -315,7 +315,7 @@ B<enter_presets> - enter the initial values of a Sudoku puzzle.
 
 =head1 VERSION 
 
-This documentation refers to B<enter_presets> version 0.01.1
+This documentation refers to B<enter_presets> version 0.01.2
 
 =head1 USAGE 
 

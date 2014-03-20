@@ -1,14 +1,14 @@
 package Games::Sudoku::Trainer::Obstacle;
- 
+
 use strict;
 use warnings;
- 
-use version; our $VERSION = qv('0.01');    # PBP
+
+use version; our $VERSION = qv('0.02');    # PBP
 
 1;
 
 __END__
- 
+
 =head1 NAME
 
 Games::Sudoku::Trainer::Obstacle - get over an obstacle while solving a Sudoku puzzle
@@ -19,8 +19,8 @@ This part of the documentation for SudokuTrainer aims at people that want
 to use SudokuTrainer to get over an obstacle while solving a Sudoku puzzle 
 by the use of Sudoku solution strategies. If this isn't what you expected, 
 please inspect section
-L<sudokutrainer.pl/GUIDE_TO_DOCUMENTATION>.
-L<Games::Sudoku::Trainer::pod::sudokutrainer.pod/GUIDE_TO_DOCUMENTATION>.
+"GUIDE TO DOCUMENTATION" in the dokumentation for B<SudokuTrainer> 
+(use "perldoc sudokutrainer.pl").
 
 =head1 USAGE 
 

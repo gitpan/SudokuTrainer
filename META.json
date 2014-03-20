@@ -15,7 +15,7 @@
    "name" : "SudokuTrainer",
    "no_index" : {
       "file" : [
-         "Games/Sudoku/Trainer/Run.pm"
+         "Games/Sudoku/Trainer/Found_info.pm"
       ]
    },
    "prereqs" : {
@@ -34,29 +34,25 @@
       }
    },
    "provides" : {
-      "Games::Sudoku::Trainer::GUI" : {
-         "file" : "lib/Games/Sudoku/Trainer/GUIdetails.pm",
-         "version" : 0
-      },
-      "Games::Sudoku::Trainer::GUIdetails" : {
-         "file" : "lib/Games/Sudoku/Trainer/GUIdetails.pm",
-         "version" : 0
+      "Games::Sudoku::Trainer::Found_info" : {
+         "file" : "lib/Games/Sudoku/Trainer/Found_info.pm",
+         "version" : "v0.3.0"
       },
       "Games::Sudoku::Trainer::Nextvalue" : {
          "file" : "lib/Games/Sudoku/Trainer/Nextvalue.pm",
-         "version" : "v0.1.0"
+         "version" : "v0.2.0"
       },
       "Games::Sudoku::Trainer::Obstacle" : {
          "file" : "lib/Games/Sudoku/Trainer/Obstacle.pm",
-         "version" : "v0.1.0"
+         "version" : "v0.2.0"
       },
       "Games::Sudoku::Trainer::Run" : {
          "file" : "lib/Games/Sudoku/Trainer/Run.pm",
-         "version" : "v0.2.0"
+         "version" : "v0.3.0"
       },
       "Games::Sudoku::Trainer::Training" : {
          "file" : "lib/Games/Sudoku/Trainer/Training.pm",
-         "version" : "v0.1.0"
+         "version" : "v0.2.0"
       }
    },
    "release_status" : "stable",
@@ -65,5 +61,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "v0.01.1"
+   "version" : "v0.01.2"
 }

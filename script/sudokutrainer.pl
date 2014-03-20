@@ -1,7 +1,6 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
-
 #use feature qw( say );
 
 # basic Sudoku structures
@@ -15,7 +14,7 @@ our @lines;     # all line objects	(0 .. 17)  rows and colums
 
 package main;
 
-use version; our $VERSION = qv('0.01.1');    # PBP
+use version; our $VERSION = qv('0.02');    # PBP
 
 BEGIN {
     use Games::Sudoku::Trainer::Cell;
@@ -52,7 +51,7 @@ It may also be used to get over an obstacle in a partially solved Sudoku puzzle.
 
 =head1 VERSION
 
-This documentation refers to SudokuTrainer version 0.01.1.
+This documentation refers to SudokuTrainer version 0.01.2.
 
 =head1 PURPOSE
 
@@ -91,8 +90,8 @@ You will get the following choices:
 A doubleclick on a choice will select it and 
 close the selection window. When you select the choice 
 I<Insert manually> the utility program
-B<enter_presets.pl> gets started. See the documentation of 
-it (use "perldoc enter_presets.pl"). 
+B<enter_presets.pl> gets started. To see the documentation of 
+it, use "perldoc enter_presets.pl". 
 After you entered the initial puzzle manually, 
 you should better save it. Chances are good that 
 you will need it several times. Corrections to 

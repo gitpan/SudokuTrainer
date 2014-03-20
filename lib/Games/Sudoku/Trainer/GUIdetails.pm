@@ -9,59 +9,14 @@ use warnings;
 package
     Games::Sudoku::Trainer::GUIdetails;
 
-use version; our $VERSION = qv('0.01');    # PBP
+use version; our $VERSION = qv('0.02');    # PBP
 
-# Private class for module Games::Sudoku::Trainer::GUIdetails.
-# Each Clues object holds the info for 1 row in the strategy details dialog,
-# i.e. for 1 of the 3 clues types: units, cands, cells
-#
 package
-    Games::Sudoku::Trainer::Clues;
-
-sub new {    # constructor for Clues objects
-    my $class = shift;
-    my $self  = {@_};
-    return bless $self, $class;
-}
-
-# Standard getters
-sub Clues_all { return $_[0]->{Clues_all} }
-sub Show_btn  { return $_[0]->{Show_btn} }
-
-# set the Clues_all property of this clues type
-sub set_Clues_all {
-    my $self = shift;
-    my ($new_val) = @_;
-    $self->{Clues_all} = $new_val;
-    return;
-}
-
-# set the uncovered clues of this clues type
-sub set_Uncov_clues {
-    my $self = shift;
-    my ($new_text) = @_;
-    ${ $self->{Uncov_clues} } = $new_text;
-    return;
-}
-
-# clear the count of uncovered clues of this clues type
-sub clear_Uncov_count {
-    my $self = shift;
-    $self->{Uncov_count} = 0;
-    return;
-}
-
-# increment the count of uncovered clues of this clues type
-# returns the new value
-sub incr_Uncov_count {
-    my $self = shift;
-    return ++$self->{Uncov_count};
-}
-
-package Games::Sudoku::Trainer::GUI;
+    Games::Sudoku::Trainer::GUI;
 our $details_bt;    # the Show details Button
 
-package Games::Sudoku::Trainer::GUIdetails;
+package
+    Games::Sudoku::Trainer::GUIdetails;
 
 my $details_db;     # DialogBox to show strategy details
 my @clues_objs;
@@ -171,6 +126,53 @@ sub _show_more {
     # insert uncovered text in col 1
     $clues_obj->set_Uncov_clues($uncovered);
     return;
+}
+
+# Private class for module Games::Sudoku::Trainer::GUIdetails.
+# Each Clues object holds the info for 1 row in the strategy details dialog,
+# i.e. for 1 of the 3 clues types: units, cands, cells
+#
+package
+    Games::Sudoku::Trainer::Clues;
+
+sub new {    # constructor for Clues objects
+    my $class = shift;
+    my $self  = {@_};
+    return bless $self, $class;
+}
+
+# Standard getters
+sub Clues_all { return $_[0]->{Clues_all} }
+sub Show_btn  { return $_[0]->{Show_btn} }
+
+# set the Clues_all property of this clues type
+sub set_Clues_all {
+    my $self = shift;
+    my ($new_val) = @_;
+    $self->{Clues_all} = $new_val;
+    return;
+}
+
+# set the uncovered clues of this clues type
+sub set_Uncov_clues {
+    my $self = shift;
+    my ($new_text) = @_;
+    ${ $self->{Uncov_clues} } = $new_text;
+    return;
+}
+
+# clear the count of uncovered clues of this clues type
+sub clear_Uncov_count {
+    my $self = shift;
+    $self->{Uncov_count} = 0;
+    return;
+}
+
+# increment the count of uncovered clues of this clues type
+# returns the new value
+sub incr_Uncov_count {
+    my $self = shift;
+    return ++$self->{Uncov_count};
 }
 
 1;

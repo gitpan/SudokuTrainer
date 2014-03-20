@@ -10,7 +10,7 @@ our @units;    # all unit objects	(0 .. 26)  rows, colums, and blocks
 
 package Games::Sudoku::Trainer::Run;
 
-use version; our $VERSION = qv('0.02');    # PBP
+use version; our $VERSION = qv('0.03');    # PBP
 
 use Getopt::Long;
 use Carp;
@@ -279,15 +279,15 @@ sub _verify_puzzle {
 #
 sub _run_puzzle {
 
-    # fetch the next find from @found
+    # fetch the oldest find from module Found_info
+    # if no find returned
+    #    call module Strategies to search in the puzzle
+    #    terminate the main loop if nothing found
     # check whether a pause is requested at this state of the puzzle
     # if yes, pause until the user hits the "Run" button
     # update the internal structures and the displayed board
-    #
-    # When this find was the last in @found,
-    #   start the strategies loop to find more values or exclusions
-    # When there is no new find, terminate the main loop
-    #
+    # add the processed find to the history
+    # 
     my $found_info_ref;
     my ( $cell, $digit, $strategy );
 
@@ -309,8 +309,6 @@ sub _run_puzzle {
             );
             $cell->insert_digit($digit);
             Games::Sudoku::Trainer::Strategies::full_house($cell);
-			# end main loop of SudokuTrainer if all values found
-##			last unless first { $_->Value == 0 } @cells[ 1 .. 81 ];
 
         } else {                           # exclude cand.s
 
@@ -326,6 +324,7 @@ sub _run_puzzle {
         }
         Games::Sudoku::Trainer::GUIhist::add_history($found_info_ref);
     }
+    # the main loop has terminated
 
     if ( ( my $valuecount = grep { $_->Value } @cells[ 1 .. 81 ] ) == 81 ) {
         Games::Sudoku::Trainer::GUI::set_status('Sudoku puzzle is solved');
