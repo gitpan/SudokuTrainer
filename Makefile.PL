@@ -12,8 +12,7 @@ WriteMakefile
   'VERSION_FROM' => 'lib/Games/Sudoku/Trainer/Run.pm',
   'PREREQ_PM' => {
                    'List::MoreUtils' => 0,
-                   'Tk' => 0,
-                   'Encode' => 0
+                   'Tk' => 0
                  }
 )
 ;

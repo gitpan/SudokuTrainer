@@ -12,10 +12,9 @@ our @rows;     # row objects		(1 .. 9)
 # to subordinate modules. These are loaded at their first usage, so this
 # will hopefully speed up a bit the startup time of the application.
 
-package
-    Games::Sudoku::Trainer::GUI;
+package Games::Sudoku::Trainer::GUI;
 
-use version; our $VERSION = qv('0.01');    # PBP
+use version; our $VERSION = qv('0.02');    # PBP
 
 use Tk;
 use Tk::ErrorDialog;
@@ -23,10 +22,11 @@ use File::Basename;
 use Encode;
 
 # globals of package GUI
+
 # global widgets
 my $mw;             # main window
 my $run_bt;         # Run-button widget
-our $details_bt;    # the Show details Button
+my $details_bt;    # the Show details Button
 my $cv;             # Canvas widget as sudoku board
 my $restrict_lb;    # Label to display pause mode restriction
 my $file_en;        # Entry widget for display of file name
@@ -86,6 +86,12 @@ sub _build_GUI {
     $strat_fr->Label( -textvariable => \$pause_strat )->pack( -side => 'left' );
     $details_bt = $strat_fr->Button(
         -text  => 'Show details',
+        -command => sub {
+                         require Games::Sudoku::Trainer::GUIdetails;
+#                         my $btnref = \$details_bt;
+#                         Games::Sudoku::Trainer::GUIdetails::build_strat_details($btnref);
+                         Games::Sudoku::Trainer::GUIdetails::build_strat_details(\$details_bt);
+                        },
         -state => 'disabled',
     )->pack( -side => 'right' );
 
@@ -153,15 +159,15 @@ sub _build_menubar {
         -menuitems => [
             [
                 qw/command ~Summary -command/ =>
-                  sub { &Games::Sudoku::Trainer::GUIhist::hist_summary($mw) },
+                  sub { Games::Sudoku::Trainer::GUIhist::hist_summary($mw) },
             ],
             [
                 qw/command ~Overview -command/ =>
-                  sub { &Games::Sudoku::Trainer::GUIhist::hist_overview($mw) },
+                  sub { Games::Sudoku::Trainer::GUIhist::hist_overview($mw) },
             ],
             [
                 qw/command ~Details -command/ =>
-                  sub { &Games::Sudoku::Trainer::GUIhist::hist_details($mw) },
+                  sub { Games::Sudoku::Trainer::GUIhist::hist_details($mw) },
             ],
         ],
     );
@@ -408,7 +414,7 @@ sub get_initialpuzzle {
         my $initfile = name_in();
         return unless $initfile;
         open( my $SUDO, '<', $initfile )
-          or do { Run::user_err("can't open $initfile:\n$!"); return };
+          or do { Games::Sudoku::Trainer::Run::user_err("can't open $initfile:\n$!"); return };
         @game = <$SUDO>;
         close($SUDO);
         show_filename($initfile);
@@ -424,7 +430,7 @@ sub get_initialpuzzle {
         $initfile = name_in($options_ref);
         return unless $initfile;
         open( my $SUDO, '<', $initfile )
-          or do { Run::user_err("can't open $initfile:\n$!"); return };
+          or do { Games::Sudoku::Trainer::Run::user_err("can't open $initfile:\n$!"); return };
         @game = <$SUDO>;
         close($SUDO);
         show_filename($initfile);
@@ -633,6 +639,8 @@ sub show_filename {
     }
 }
 
+#-----------------------------------------------------------------------
+
 # Quit the trainer
 # Remind if the initial puzzle hasn't been saved
 #
@@ -671,7 +679,7 @@ sub _prio_save_as {
     use Encode;
     $outfile = encode( 'iso-8859-1', $outfile );
     open( my $PRIO, '>', $outfile )
-      or do { Run::user_err("Cannot open $outfile:\n$!"); return };
+      or do { Games::Sudoku::Trainer::Run::user_err("Cannot open $outfile:\n$!"); return };
     print $PRIO join( "\n", Games::Sudoku::Trainer::Priorities::copy_strats() ), "\n";
     close($PRIO) or die "Cannot close $outfile: $!\n";
     return;
@@ -691,7 +699,7 @@ sub _prio_load {
     my $infile = name_in($options_ref);
     return unless $infile;
     open( my $PRIO, '<', $infile )
-      or do { Run::user_err("can't open $infile:\n$!"); return };
+      or do { Games::Sudoku::Trainer::Run::user_err("can't open $infile:\n$!"); return };
     my @strats = <$PRIO>;
     close($PRIO);
     chomp foreach @strats;

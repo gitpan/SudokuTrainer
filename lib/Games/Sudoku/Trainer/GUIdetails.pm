@@ -6,18 +6,11 @@ use warnings;
 # strategy details dialog
 #-----------------------------------------------------------------------
 
-package
-    Games::Sudoku::Trainer::GUIdetails;
+package Games::Sudoku::Trainer::GUIdetails;
 
-use version; our $VERSION = qv('0.02');    # PBP
+use version; our $VERSION = qv('0.03');    # PBP
 
-package
-    Games::Sudoku::Trainer::GUI;
-our $details_bt;    # the Show details Button
-
-package
-    Games::Sudoku::Trainer::GUIdetails;
-
+my $details_bt;    # the Show details Button
 my $details_db;     # DialogBox to show strategy details
 my @clues_objs;
 
@@ -25,16 +18,17 @@ my @clues_objs;
 my @all_types = qw/units cands cells/;    # all clue type names
 
 # construct the strategy details dialog
+#   build_strat_details(\$details_bt);
 #
 sub build_strat_details {
-    $details_bt->cget( -command ) and return;    # already done
+    $details_bt = ${ shift() };    # dereference par.
     require Tk::DialogBox;
 
     my %detail_typenames;
     @detail_typenames{@all_types} = qw/Units Candidates Cells/;
     $details_db = $details_bt->DialogBox(
         -title       => 'Strategy details',
-        -showcommand => \&_fill_details
+        -showcommand => \&_fill_details,
     );
     $details_db->Label( -text => 'Success details of this strategy' )->pack();
     $details_db->Label( -text => "Uncover as few details as possible\n"
@@ -65,7 +59,7 @@ sub build_strat_details {
 		);
     }
     $details_db->resizable( 0, 0 );    # freeze window size
-    $details_bt->configure( -command => sub { $details_db->Show() } );
+    $details_db->Show();
     return;
 } ## end sub build_strat_details
 
@@ -102,10 +96,10 @@ sub _fill_details {
 #   _show_more($clues_obj_ref);
 #
 sub _show_more {
-    my $clues_obj = ${ shift() };    # dereference
+    my $clues_obj = ${ shift() };    # dereference par.
 
  #    my $clues_obj = ${shift};   # Ambiguous use of ${shift} resolved to $shift
- #    my $clues_obj = $&{shift};  # ($clues_obj ist undef)
+ #    my $clues_obj = $&{shift};  # ($clues_obj is undef)
  #    my $clues_obj = ${&shift};  # Undefined subroutine &GUI::shift called
  #    my $clues_obj = ${&CORE::shift};   # Undefined sub &CORE::shift called
  #    my $clues_obj = ${&Run::shift};    # Undefined sub &Run::shift called
@@ -132,8 +126,7 @@ sub _show_more {
 # Each Clues object holds the info for 1 row in the strategy details dialog,
 # i.e. for 1 of the 3 clues types: units, cands, cells
 #
-package
-    Games::Sudoku::Trainer::Clues;
+package Games::Sudoku::Trainer::Clues;
 
 sub new {    # constructor for Clues objects
     my $class = shift;

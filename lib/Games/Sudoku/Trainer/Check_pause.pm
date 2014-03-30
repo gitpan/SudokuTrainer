@@ -7,10 +7,9 @@ use warnings;
 package main;
 our @cells;    # cell objects		(1 .. 81)
 
-package
-    Games::Sudoku::Trainer::Check_pause;
+package Games::Sudoku::Trainer::Check_pause;
 
-use version; our $VERSION = qv('0.01');    # PBP
+use version; our $VERSION = qv('0.02');    # PBP
 
 # This package checks whether a pause is requested at the current state
 # of the puzzle.
@@ -28,8 +27,6 @@ sub check_pause {
     if ( _check_pause1($found_info_ref) ) {
         Games::Sudoku::Trainer::Pause->setInfo_ref($found_info_ref);
         Games::Sudoku::Trainer::Pause->setStrat($strategy);
-        require Games::Sudoku::Trainer::GUIdetails;
-        Games::Sudoku::Trainer::GUIdetails::build_strat_details();
 		# enable the Details button		
         Games::Sudoku::Trainer::GUI::button_state( 'Details', 'enable' );
         if ( $found_info_ref->[1] eq 'insert' ) {

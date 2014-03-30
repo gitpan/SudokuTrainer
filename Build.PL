@@ -10,7 +10,7 @@ my $distrib = 'Games::Sudoku::Trainer';   # Namespace of the Distribution
 
 my %args = (
     dist_name           => "$distro",
-    dist_version        => '0.01.2',
+    dist_version        => '0.01.3',
 	# Ohne Par. module_name kommt bei den Kommandos "perl Build.PL", 
 	# "Build disttest" und "Build dist" die (sachlich falsche) Meldung
 	# "No 'module_name' # was provided ...". Außerdem ist nach der Inst.
@@ -30,7 +30,13 @@ my %args = (
 
 	meta_merge          => {
 		no_index => {
-		  file      => [ 'Games/Sudoku/Trainer/Found_info.pm' ],
+#		  file      => [ 'Games/Sudoku/Trainer/Found_info.pm' ],
+		  file      => [
+              'Games/Sudoku/Trainer/Check_pause.pm',
+              'Games/Sudoku/Trainer/Found_info.pm',
+              'Games/Sudoku/Trainer/GUI.pm',
+              'Games/Sudoku/Trainer/GUIdetails.pm',
+          ],
 #		  directory => [ 'My/Private' ],
 #		  package   => [ 'My::Module::Secret' ],
 #		  namespace => [ 'My::Module::Sample' ],
@@ -44,7 +50,7 @@ my %args = (
         'Tk' => 0,
 #?        'Tk::Balloon' => 0,
 #?        'Tk::ErrorDialog' => 0,
-        'Encode' => 0,
+#        'Encode' => 0,
 #?        'File::Basename' => 0,
 #?        'Getopt::Long' => 0,
         'List::MoreUtils' => 0,
