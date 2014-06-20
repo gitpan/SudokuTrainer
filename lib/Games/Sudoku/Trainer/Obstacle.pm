@@ -3,7 +3,7 @@ package Games::Sudoku::Trainer::Obstacle;
 use strict;
 use warnings;
 
-use version; our $VERSION = qv('0.02');    # PBP
+use version; our $VERSION = qv('0.03');    # PBP
 
 1;
 
@@ -19,8 +19,7 @@ This part of the documentation for SudokuTrainer aims at people that want
 to use SudokuTrainer to get over an obstacle while solving a Sudoku puzzle 
 by the use of Sudoku solution strategies. If this isn't what you expected, 
 please inspect section
-"GUIDE TO DOCUMENTATION" in the dokumentation for B<SudokuTrainer> 
-(use "perldoc sudokutrainer.pl").
+L<Games::Sudoku::Trainer::General_info/GUIDE TO DOCUMENTATION>.
 
 =head1 USAGE 
 
@@ -35,8 +34,8 @@ special situations that may occur in step 1.
 
 
                      +---------+
-                  -->| Step 1a |-->\
-                 /   +---------+    |
+                  -->| Step 1a |-->
+                 /   +---------+   \
                  |                  |
    +--------+    /                   \     +--------+    +--------+
    | Step 1 |---+---------------------+--->| Step 2 |--->| Step 3 |-->\

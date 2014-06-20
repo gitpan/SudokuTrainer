@@ -14,7 +14,7 @@ Restrictions
 
 PURPOSE
 -------
-This document informs about SudokuTrainer version 0.01.2.
+This document informs about SudokuTrainer version 0.01.4.
 
 
 DESCRIPTION
@@ -91,11 +91,11 @@ DISPLAY THE DOCUMENTATION
 -------------------------
 SudokuTrainer aims at 3 groups of users (cf. section DESCRIPTION above).
 So the docu is devided into several sections. They can be read by
-    perldoc sudokutrainer.pl                    (General info)
-    perldoc enter_presets.pl                    (Enter preset values)
-    perldoc Games::Sudoku::Trainer::Training    (Train a strategy)
-    perldoc Games::Sudoku::Trainer::Obstacle    (Get next strategy)
-    perldoc Games::Sudoku::Trainer::Nextvalue   (Get next value)
+    perldoc Games::Sudoku::Trainer::General_info   (General info)
+    perldoc Games::Sudoku::Trainer::Training       (Train a strategy)
+    perldoc Games::Sudoku::Trainer::Obstacle       (Get next strategy)
+    perldoc Games::Sudoku::Trainer::Nextvalue      (Get next value)
+    perldoc enter_presets.pl                       (Enter preset values)
 
 
 RESTRICTIONS

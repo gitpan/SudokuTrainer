@@ -18,8 +18,7 @@ Games::Sudoku::Trainer::Nextvalue - get some new value while solving a Sudoku pu
 This part of the documentation for SudokuTrainer aims at people that 
 just want some new value to get over an obstacle while solving a Sudoku 
 puzzle. If this isn't what you expected, please inspect section
-"GUIDE TO DOCUMENTATION" in the dokumentation for B<SudokuTrainer> 
-(use "perldoc sudokutrainer.pl").
+L<Games::Sudoku::Trainer::General_info/GUIDE TO DOCUMENTATION>.
 
 =head1 USAGE 
 

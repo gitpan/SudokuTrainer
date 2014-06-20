@@ -12,10 +12,9 @@ our @blocks;    # block objects		(1 .. 9)
 our @units;     # all unit objects	(0 .. 26)  rows, colums, and blocks
 our @lines;     # all line objects	(0 .. 17)  rows and colums
 
-package
-    Games::Sudoku::Trainer::Strategies;
+package Games::Sudoku::Trainer::Strategies;
 
-use version; our $VERSION = qv('0.03');    # PBP
+use version; our $VERSION = qv('0.04');    # PBP
 
 use List::Util;        # for first
 use List::MoreUtils;   # for uniq and firstidx
@@ -906,7 +905,7 @@ sub _cand_cells {
 #	my @all_twins = _collect_2cands(@cell_list);
 #	my @all_twins = _collect_2cands($unit);      # uses the members of the unit
 #		returns list of refs to 2-element arrays:
-#         cell-obj, string of the 2 cand.s in this cell
+#         [cell-obj, string of the 2 cand.s in this cell
 #
 sub _collect_2cands {
     my @cell_list = @_;
@@ -927,8 +926,13 @@ sub _map_filtered {
     @liste = grep { $_ } @liste;    # skip index 0, if required (undef)
     return () unless @liste;
 
-    return eval "map {$mapblock} grep ({$filter} \@liste)"
-      or die "3\nEval error: $@ ";    # final ' ' adds trace info
+    my @res = eval "map {$mapblock} grep ({$filter} \@liste)";
+#    $@  and  do {
+    if ($@) {
+          my $msg = "    Filter:       $filter\n    Mapblock: $mapblock\n";
+          die "3\nEval error: $@$msg ";    # final ' ' adds trace info
+         };
+    return @res;
 }
 
 #-----------------------------------------------------------------------

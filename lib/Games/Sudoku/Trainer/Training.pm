@@ -18,8 +18,7 @@ Games::Sudoku::Trainer::Training - train a certain Sudoku strategy
 This part of the documentation for B<SudokuTrainer> aims at people that want 
 to use SudokuTrainer to train a certain Sudoku strategy. If this isn't what 
 you expected, please inspect section 
-"GUIDE TO DOCUMENTATION" in the dokumentation for B<SudokuTrainer> 
-(use "perldoc sudokutrainer.pl").
+L<Games::Sudoku::Trainer::General_info/GUIDE TO DOCUMENTATION>.
 
 =head1 USAGE 
 

@@ -703,6 +703,7 @@ sub _prio_load {
     my @strats = <$PRIO>;
     close($PRIO);
     chomp foreach @strats;
+#TODO: chomp @strats;   _or_   my @strats = chomp <$PRIO>;
     Games::Sudoku::Trainer::Priorities::set_strats( \@strats );
     return;
 }

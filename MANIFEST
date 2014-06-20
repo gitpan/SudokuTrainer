@@ -18,6 +18,7 @@ lib/Games/Sudoku/Trainer/examples/unique_rectangle_type_2.sudo
 lib/Games/Sudoku/Trainer/examples/x-wing.sudo
 lib/Games/Sudoku/Trainer/examples/xy-wing.sudo
 lib/Games/Sudoku/Trainer/Found_info.pm
+lib/Games/Sudoku/Trainer/General_info.pm
 lib/Games/Sudoku/Trainer/GUI.pm
 lib/Games/Sudoku/Trainer/GUIdetails.pm
 lib/Games/Sudoku/Trainer/GUIhist.pm

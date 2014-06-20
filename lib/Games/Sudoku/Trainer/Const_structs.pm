@@ -10,10 +10,9 @@ our @rows;      # row objects       (1 .. 9)
 our @cols;      # col objects       (1 .. 9)
 our @blocks;    # block objects     (1 .. 9)
 
-package
-    Games::Sudoku::Trainer::Const_structs;
+package Games::Sudoku::Trainer::Const_structs;
 
-use version; our $VERSION = qv('0.01');    # PBP
+use version; our $VERSION = qv('0.02');    # PBP
 
 # globals of package Const_structs
 # intersection of units

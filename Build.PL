@@ -10,7 +10,7 @@ my $distrib = 'Games::Sudoku::Trainer';   # Namespace of the Distribution
 
 my %args = (
     dist_name           => "$distro",
-    dist_version        => '0.01.3',
+    dist_version        => '0.01.4',
 	# Ohne Par. module_name kommt bei den Kommandos "perl Build.PL", 
 	# "Build disttest" und "Build dist" die (sachlich falsche) Meldung
 	# "No 'module_name' # was provided ...". Außerdem ist nach der Inst.
@@ -32,13 +32,24 @@ my %args = (
 		no_index => {
 #		  file      => [ 'Games/Sudoku/Trainer/Found_info.pm' ],
 		  file      => [
-              'Games/Sudoku/Trainer/Check_pause.pm',
-              'Games/Sudoku/Trainer/Found_info.pm',
-              'Games/Sudoku/Trainer/GUI.pm',
-              'Games/Sudoku/Trainer/GUIdetails.pm',
+              'Games/Sudoku/Trainer/Cell.pm',
+#              'Games/Sudoku/Trainer/Check_pause.pm',
+#              'Games/Sudoku/Trainer/Const_structs.pm',
+#              'Games/Sudoku/Trainer/Found_info.pm',
+#              'Games/Sudoku/Trainer/GUI.pm',
+#              'Games/Sudoku/Trainer/GUIdetails.pm',
+              'Games/Sudoku/Trainer/Priorities.pm',
+#              'Games/Sudoku/Trainer/Strategies.pm',
           ],
 #		  directory => [ 'My/Private' ],
-#		  package   => [ 'My::Module::Secret' ],
+		  package   => [ 
+              'Games::Sudoku::Trainer::Check_pause',
+              'Games::Sudoku::Trainer::Const_structs',
+              'Games::Sudoku::Trainer::Found_info',
+              'Games::Sudoku::Trainer::GUI',
+              'Games::Sudoku::Trainer::GUIdetails',
+              'Games::Sudoku::Trainer::Strategies',
+ ],
 #		  namespace => [ 'My::Module::Sample' ],
 		},
     },

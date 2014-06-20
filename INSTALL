@@ -1,6 +1,6 @@
 CONTENTS
 --------
-Installation prologue
+Installation of Perl/Tk
 Installation
     1. CPAN
     2. CPANP
@@ -9,9 +9,11 @@ Installation
 Acknowledgement
 
 
-INSTALLATION PROLOGUE
----------------------
-This section is relevant only for users that work on Windows with the
+INSTALLATION OF PERL/TK
+-----------------------
+Users of Linux or of the Strawberry Perl distribution usually have
+Tk already installed or may install it easily with their package manager.
+So this section is relevant only for users that work on Windows with the
 Perl distribution ActivePerl.
 
 Newer versions of ActivePerl install the MinGW package and the dmake
@@ -23,15 +25,17 @@ Please look whether Tk (the Perl/Tk package) or gcc (a C++ compiler) is
 installed. If none of them is present, choose one for install. In any 
 case, you will need administative privileges for this.
 
-Install gcc: Inside ppm, install the MinGW package. This will also install
-             the gcc compiler.
+Install gcc: Using ppm, install the MinGW package. This will also install
+             the gcc compiler. When gcc is available, the installation of
+             Games::Sudoku::Trainer can successfully install Tk as a 
+             prerequisite.
 
 Install Tk: In your browser, visit the website http://www.bribes.org/perl/.
             On the bottom, select your repository (32 bit or 64 bit). In the
             repository search for the "Tk" entry, copy the DOS command in it
             and insert it in the DOS shell window. This command will add Tk
-            to the ppm repository of ActivePerl.
-
+            to the ppm repository of ActivePerl. Now you can use ppm to 
+            install Tk.
 
 
 INSTALLATION INSTRUCTIONS
@@ -56,7 +60,7 @@ http://search.cpan.org/search?query=sudokutrainer&mode=all
 and click on the search result "SudokuTrainer",
 and from there download the distribution file, then unpack it:
 
-On Linux:   tar -xzf SudokuTrainer-0.000.005-TRIAL.tar.gz
+On Linux:   tar -xzf SudokuTrainer-<version>.tar.gz
 On Windows: Use a ZIP archiver program (e. g. winZIP or 7-Zip) to unpack the
             distribution file.
 			
