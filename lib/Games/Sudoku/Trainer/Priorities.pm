@@ -1,7 +1,8 @@
 use strict;
 use warnings;
 
-package Games::Sudoku::Trainer::Priorities;
+package
+    Games::Sudoku::Trainer::Priorities;
 
 use version; our $VERSION = qv('0.02');    # PBP
 

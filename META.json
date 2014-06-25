@@ -15,16 +15,10 @@
    "name" : "SudokuTrainer",
    "no_index" : {
       "file" : [
-         "Games/Sudoku/Trainer/Cell.pm",
-         "Games/Sudoku/Trainer/Priorities.pm"
+         "Games/Sudoku/Trainer/Run.pm"
       ],
       "package" : [
-         "Games::Sudoku::Trainer::Check_pause",
-         "Games::Sudoku::Trainer::Const_structs",
-         "Games::Sudoku::Trainer::Found_info",
-         "Games::Sudoku::Trainer::GUI",
-         "Games::Sudoku::Trainer::GUIdetails",
-         "Games::Sudoku::Trainer::Strategies"
+         "Games::Sudoku::Trainer::Cell"
       ]
    },
    "prereqs" : {
@@ -46,32 +40,9 @@
          "file" : "lib/Games/Sudoku/Trainer/Cell.pm",
          "version" : "v0.2.0"
       },
-      "Games::Sudoku::Trainer::Check_pause" : {
-         "file" : "lib/Games/Sudoku/Trainer/Check_pause.pm",
-         "version" : "v0.2.0"
-      },
-      "Games::Sudoku::Trainer::Clues" : {
-         "file" : "lib/Games/Sudoku/Trainer/GUIdetails.pm"
-      },
-      "Games::Sudoku::Trainer::Const_structs" : {
-         "file" : "lib/Games/Sudoku/Trainer/Const_structs.pm",
-         "version" : "v0.2.0"
-      },
-      "Games::Sudoku::Trainer::Found_info" : {
-         "file" : "lib/Games/Sudoku/Trainer/Found_info.pm",
-         "version" : "v0.3.0"
-      },
-      "Games::Sudoku::Trainer::GUI" : {
-         "file" : "lib/Games/Sudoku/Trainer/GUI.pm",
-         "version" : "v0.2.0"
-      },
-      "Games::Sudoku::Trainer::GUIdetails" : {
-         "file" : "lib/Games/Sudoku/Trainer/GUIdetails.pm",
-         "version" : "v0.3.0"
-      },
       "Games::Sudoku::Trainer::General_info" : {
          "file" : "lib/Games/Sudoku/Trainer/General_info.pm",
-         "version" : "v0.1.0"
+         "version" : "v0.2.0"
       },
       "Games::Sudoku::Trainer::Nextvalue" : {
          "file" : "lib/Games/Sudoku/Trainer/Nextvalue.pm",
@@ -81,16 +52,8 @@
          "file" : "lib/Games/Sudoku/Trainer/Obstacle.pm",
          "version" : "v0.3.0"
       },
-      "Games::Sudoku::Trainer::Priorities" : {
-         "file" : "lib/Games/Sudoku/Trainer/Priorities.pm",
-         "version" : "v0.2.0"
-      },
       "Games::Sudoku::Trainer::Run" : {
          "file" : "lib/Games/Sudoku/Trainer/Run.pm",
-         "version" : "v0.4.0"
-      },
-      "Games::Sudoku::Trainer::Strategies" : {
-         "file" : "lib/Games/Sudoku/Trainer/Strategies.pm",
          "version" : "v0.4.0"
       },
       "Games::Sudoku::Trainer::Training" : {
@@ -104,5 +67,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "v0.01.4"
+   "version" : "v0.01.5"
 }

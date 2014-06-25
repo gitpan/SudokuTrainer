@@ -9,10 +9,11 @@ our @cells;     # cell objects		(1 .. 81)
 our @rows;      # row objects		(1 .. 9)
 our @cols;      # col objects		(1 .. 9)
 our @blocks;    # block objects		(1 .. 9)
-our @units;     # all unit objects	(0 .. 26)  rows, colums, and blocks
-our @lines;     # all line objects	(0 .. 17)  rows and colums
+our @units;     # all unit objects	(0 .. 26)  rows, columns, and blocks
+our @lines;     # all line objects	(0 .. 17)  rows and columns
 
-package Games::Sudoku::Trainer::Strategies;
+package
+    Games::Sudoku::Trainer::Strategies;
 
 use version; our $VERSION = qv('0.04');    # PBP
 

@@ -2,6 +2,8 @@ use strict;
 use warnings;
 #use feature qw( say );
 
+# Define constant Sudoku structures
+
 # basic Sudoku structures
 # don't panic - all basic Sudoku structures are constant
 package main;
@@ -9,14 +11,28 @@ our @cells;     # cell objects      (1 .. 81)
 our @rows;      # row objects       (1 .. 9)
 our @cols;      # col objects       (1 .. 9)
 our @blocks;    # block objects     (1 .. 9)
+our @units;     # all unit objects	(0 .. 26)  rows, columns, and blocks
+our @lines;     # all line objects	(0 .. 17)  rows and columns
 
-package Games::Sudoku::Trainer::Const_structs;
+package
+    Games::Sudoku::Trainer::Const_structs;
 
 use version; our $VERSION = qv('0.02');    # PBP
+
+use Games::Sudoku::Trainer::Cell;
+use Games::Sudoku::Trainer::Unit;
 
 # globals of package Const_structs
 # intersection of units
 my ( $crossRowCol_ref, $crossRowBlock_ref, $crossColBlock_ref );
+
+define_objects();
+
+push( @units, @rows[ 1 .. 9 ], @cols[ 1 .. 9 ], @blocks[ 1 .. 9 ] );
+@lines = @units[ 0 .. 17 ];
+
+define_crossRowCol();
+define_crossLineBlock();
 
 sub define_objects {
 

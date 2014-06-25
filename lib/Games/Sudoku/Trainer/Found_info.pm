@@ -2,7 +2,8 @@ use strict;
 use warnings;
 #use feature qw( say );
 
-package Games::Sudoku::Trainer::Found_info;
+package 
+   Games::Sudoku::Trainer::Found_info;
 
 use version; our $VERSION = qv('0.03');    # PBP
 

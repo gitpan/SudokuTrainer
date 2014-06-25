@@ -8,12 +8,10 @@ package main;
 our @rows;      # row objects		(1 .. 9)
 our @cols;      # col objects		(1 .. 9)
 our @blocks;    # block objects		(1 .. 9)
-our @units;     # all unit objects	(0 .. 26)  rows, colums, and blocks
-our @lines;     # all line objects	(0 .. 17)  rows and colums
+our @units;     # all unit objects	(0 .. 26)  rows, columns, and blocks
+our @lines;     # all line objects	(0 .. 17)  rows and columns
 
 sub init_all {
-    use Games::Sudoku::Trainer::Cell;
-    use Games::Sudoku::Trainer::Unit;
     use Games::Sudoku::Trainer::Const_structs;
     use Games::Sudoku::Trainer::Priorities;
     use Games::Sudoku::Trainer::Found_info;
@@ -23,24 +21,16 @@ sub init_all {
     use Games::Sudoku::Trainer::GUIhist;
     use Games::Sudoku::Trainer::Write_puzzle;
     use Games::Sudoku::Trainer::Check_pause;
-
-    Games::Sudoku::Trainer::Const_structs::define_objects();
-
-    push( @units, @rows[ 1 .. 9 ], @cols[ 1 .. 9 ], @blocks[ 1 .. 9 ] );
-    @lines = @units[ 0 .. 17 ];
-
-    Games::Sudoku::Trainer::Const_structs::define_crossRowCol();
-    Games::Sudoku::Trainer::Const_structs::define_crossLineBlock();
-
-    #Tk::MainLoop();
 }
 
 # basic Sudoku structures
 # don't panic - all basic Sudoku structures are constant
 package main;
 our @cells;    # cell objects		(1 .. 81)
-#our @units;    # all unit objects	(0 .. 26)  rows, colums, and blocks
+#our @units;    # all unit objects	(0 .. 26)  rows, columns, and blocks
 
+#package
+#    Games::Sudoku::Trainer::Run;
 package Games::Sudoku::Trainer::Run;
 
 use version; our $VERSION = qv('0.04');    # PBP

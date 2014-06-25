@@ -6,7 +6,8 @@ use warnings;
 # strategy details dialog
 #-----------------------------------------------------------------------
 
-package Games::Sudoku::Trainer::GUIdetails;
+package
+    Games::Sudoku::Trainer::GUIdetails;
 
 use version; our $VERSION = qv('0.03');    # PBP
 
@@ -126,7 +127,8 @@ sub _show_more {
 # Each Clues object holds the info for 1 row in the strategy details dialog,
 # i.e. for 1 of the 3 clues types: units, cands, cells
 #
-package Games::Sudoku::Trainer::Clues;
+package
+    Games::Sudoku::Trainer::Clues;
 
 sub new {    # constructor for Clues objects
     my $class = shift;

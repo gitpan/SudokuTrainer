@@ -1,6 +1,6 @@
 package Games::Sudoku::Trainer::General_info;
 
-use version; our $VERSION = qv('0.01');    # PBP
+use version; our $VERSION = qv('0.02');    # PBP
 
 1;
 
@@ -15,7 +15,7 @@ It may also be used to get over an obstacle in a partially solved Sudoku puzzle.
 
 =head1 VERSION
 
-This documentation refers to SudokuTrainer version 0.01.4.
+This documentation refers to SudokuTrainer version 0.01.5.
 
 =head1 PURPOSE
 
